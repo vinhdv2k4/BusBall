@@ -1,0 +1,38 @@
+---
+description: Unity anti-patterns to avoid
+alwaysApply: true
+---
+
+# Anti-Pattern Rule
+
+The agent must avoid common Unity and software architecture anti-patterns.
+
+Avoid:
+
+- God Class
+- Massive MonoBehaviour
+- Manager Hell
+- Singleton Abuse
+- Static State Abuse
+- Tight Coupling
+- Circular Dependency
+- Spaghetti Logic
+- Copy-Paste Code
+- Magic Numbers
+- Hard-coded References
+- Deep Nested If Statements
+- Large Switch Statements
+- Hidden Side Effects
+- Large Update Loops
+- Business Logic inside UI classes
+- Business Logic inside MonoBehaviour when it can be separated
+- Public Fields Everywhere
+- Scene-dependent logic that cannot be reused
+- Direct dependency between unrelated systems
+
+If the existing codebase contains these problems, the agent must:
+
+- Report the issue before changing code.
+- Explain the impact.
+- Suggest a safe refactor plan.
+- Avoid making the problem worse.

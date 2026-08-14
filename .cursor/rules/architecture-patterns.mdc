@@ -1,0 +1,117 @@
+---
+description: Reusable architecture and design pattern rules
+alwaysApply: true
+---
+
+# Architecture and Pattern Rule
+
+The agent must prioritize reusable architecture when reasonable.
+
+Before implementation, the agent must evaluate:
+
+- Can this logic be reused?
+- Can this behavior have multiple variations?
+- Can this system grow later?
+- Will designers need to configure this in the Inspector?
+- Will this feature be used in multiple scenes?
+- Will this logic be shared by multiple gameplay systems?
+
+If yes, the agent should prefer:
+
+- Interfaces
+- Reusable components
+- Services
+- ScriptableObject-based configuration
+- Design patterns
+- Composition
+- Dependency injection where reasonable
+- Clear separation between data, logic, and presentation
+
+The agent must not over-engineer.
+
+Design patterns should only be used when they solve a real problem.
+
+Preferred patterns for Unity:
+
+## Strategy Pattern
+
+Use for interchangeable behavior.
+
+Good for:
+
+- Different puzzle rules
+- Different scoring logic
+- Different enemy behavior
+- Different level selection logic
+
+## State Machine
+
+Use for state-driven flows.
+
+Good for:
+
+- Game states
+- Character states
+- Enemy AI states
+- Puzzle board states
+- UI flow
+
+## Factory Pattern
+
+Use for controlled object creation.
+
+Good for:
+
+- Spawning gameplay objects
+- Creating puzzle pieces
+- Creating level elements
+- Creating UI items
+
+## Observer / Event Pattern
+
+Use for decoupled communication.
+
+Good for:
+
+- UI reacting to gameplay changes
+- Audio reacting to events
+- Analytics reacting to player actions
+- Achievement systems
+
+## Command Pattern
+
+Use for representing actions.
+
+Good for:
+
+- Input actions
+- Undo/redo
+- Puzzle moves
+- Replay systems
+- Turn-based systems
+
+## ScriptableObject Architecture
+
+Use for data-driven design.
+
+Good for:
+
+- Level configs
+- Item configs
+- Puzzle rules
+- Difficulty settings
+- Character stats
+
+## Dependency Injection
+
+Use when dependencies should be explicit and replaceable.
+
+Good for:
+
+- Testing
+- Services
+- Save systems
+- Analytics systems
+- Audio systems
+
+The agent must explain which pattern is being used and why.

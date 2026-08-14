@@ -1,0 +1,30 @@
+Hard Level.png
+size:1024,1024
+filter:Linear,Linear
+!
+bounds:235,30,204,185
+PictoIcon_Skull
+bounds:2,217,524,215
+PictoIcon_Skull2
+bounds:2,2,231,213
+Super hard
+bounds:528,230,438,64
+Warning
+bounds:2,434,640,110
+arrow2
+bounds:644,436,67,87
+offsets:3,2,73,91
+rotate:90
+arrow3
+bounds:441,141,58,74
+offsets:3,2,64,79
+arrow_superhard_1
+bounds:528,296,107,136
+crazy hard
+bounds:528,164,456,64
+noti shape
+bounds:644,505,314,39
+shape_purple
+bounds:2,785,1008,237
+shape_red
+bounds:2,546,1008,237

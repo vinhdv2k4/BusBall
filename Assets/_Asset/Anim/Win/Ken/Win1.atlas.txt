@@ -1,0 +1,9 @@
+Win1.png
+size:336,336
+filter:Linear,Linear
+Layer 1
+bounds:2,2,168,330
+offsets:0,183,168,514
+Layer 2
+bounds:172,192,114,140
+offsets:0,62,114,202

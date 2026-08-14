@@ -1,0 +1,119 @@
+---
+description: Object-Oriented Programming standards
+alwaysApply: true
+---
+
+# Object-Oriented Programming Rule
+
+The agent must apply the four core OOP principles: Encapsulation, Abstraction, Inheritance, and Polymorphism.
+
+## Encapsulation
+
+The agent must protect internal object state.
+
+Do not:
+
+- Use public fields carelessly.
+- Expose mutable state directly.
+- Allow external classes to freely modify internal data.
+- Let unrelated systems control another object's internal rules.
+
+Prefer:
+
+- `private` fields.
+- `[SerializeField] private` fields for Unity Inspector values.
+- `readonly` fields when appropriate.
+- Controlled properties.
+- Methods that clearly express intent.
+
+Objects should protect their own valid state.
+
+State changes should happen through meaningful behavior methods, not direct external mutation.
+
+Example:
+
+- Prefer `playerHealth.TakeDamage(amount)`.
+- Avoid `playerHealth.currentHealth -= amount` from outside.
+
+## Abstraction
+
+The agent must separate what a system does from how it does it.
+
+High-level code should depend on contracts, not concrete implementation details.
+
+Prefer:
+
+- Interfaces
+- Abstract classes
+- Service contracts
+- Gameplay contracts
+- Data-driven configuration
+
+Use abstraction when:
+
+- There may be multiple implementations.
+- A system may change in the future.
+- A system should be testable.
+- A system should not depend on Unity-specific details.
+- A feature needs to be reused.
+
+Examples:
+
+- `IDamageable`
+- `IInteractable`
+- `IMovable`
+- `ISaveService`
+- `IAudioService`
+- `ILevelProvider`
+
+Avoid hard dependency on concrete classes when the behavior may vary.
+
+## Inheritance
+
+The agent must use inheritance only when there is a true "is-a" relationship.
+
+Do not use inheritance only to reuse code.
+
+Avoid:
+
+- Deep inheritance trees.
+- God base classes.
+- Base classes with too many responsibilities.
+- Fragile inheritance hierarchies.
+
+Prefer composition when behavior can be assembled from smaller parts.
+
+Inheritance is acceptable when:
+
+- The relationship is stable.
+- The base class is small.
+- The base class has a clear responsibility.
+- Derived classes truly represent specialized versions of the base type.
+
+If inheritance becomes deeper than 2-3 levels, the agent must consider composition, Strategy Pattern, or interfaces instead.
+
+## Polymorphism
+
+The agent must use polymorphism to support flexible behavior.
+
+Prefer polymorphism over large conditional logic when behavior varies by type or context.
+
+Use:
+
+- Interfaces
+- Abstract classes
+- Virtual methods
+- Strategy Pattern
+- State Pattern
+- Event-driven design
+
+Avoid:
+
+- Large if/else chains.
+- Large switch statements.
+- Repeated type checking.
+- Hard-coded behavior branches.
+
+The system should be easy to extend without modifying existing logic too much.
+
+New behavior should often be added by creating a new implementation, not by editing a giant conditional block.

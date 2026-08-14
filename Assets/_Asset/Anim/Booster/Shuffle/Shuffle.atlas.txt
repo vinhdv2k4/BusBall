@@ -1,0 +1,5 @@
+Shuffle.png
+size:676,676
+filter:Linear,Linear
+shuffle
+bounds:2,86,670,586

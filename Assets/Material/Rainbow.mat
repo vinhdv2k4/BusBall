@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Rainbow
+  m_Shader: {fileID: 4800000, guid: 5f9c375d1712e17499d0b1a20850cc9a, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _USEUVOFFSET_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: {}
+    m_Ints: {}
+    m_Floats:
+      _AnisoBlend: 0
+      _BloomIntensity: 10
+      _BloomSpeed: 10
+      _ColorWarpIntensity: 0.63
+      _DiamondSizeMax: 1.08
+      _DiamondSizeMin: 0.42
+      _GlobalNoiseScale: 0.4
+      _GridScale: 2.5
+      _NoiseIntensity: 0.38
+      _NoiseScale: 2.58
+      _NoiseScaleMax: 15
+      _NoiseScaleMin: 2
+      _NoiseSpeed: -0.15
+      _OutlineSoftness: 0.8
+      _Saturation: 0.87
+      _ScaleAnimSpeed: 0.1
+      _SizeAnimSpeed: 3.02
+      _SparkleDensity: 2
+      _SparkleSize: 0.78
+      _SparkleSpeed: 4.75
+      _Speed: 0.4
+      _StarSizeMax: 0.46
+      _StarSizeMin: 0.1
+      _UseUVOffset: 1
+      _Value: 1.43
+      _WarpIntensity: 3.32
+      _WarpScale: 0.53
+      _WaveAmplitude: 0.02
+      _WaveFrequency: 4.75
+      _WaveSpeed: 2
+      _WobbleAmp: 0.448
+      _WobbleFreq: 4.27
+      _WobbleSpeed: 1.5
+      _WorldScale: 0.16
+    m_Colors:
+      _AnisoNoiseScale: {r: 1, g: 1, b: 1, a: 133.45}
+      _Color1: {r: 1, g: 0.0141509175, b: 0.09439425, a: 1}
+      _Color2: {r: 0.9811321, g: 0.33253533, b: 0.0509078, a: 1}
+      _Color3: {r: 1, g: 0.8836207, b: 0, a: 1}
+      _Color4: {r: 0, g: 0.8396226, b: 0, a: 1}
+      _Color5: {r: 0, g: 0.08188484, b: 0.8301887, a: 1}
+      _Color6: {r: 0.41181943, g: 0.034754362, b: 0.6698113, a: 1}
+      _Color7: {r: 1, g: 0, b: 0.20754719, a: 1}
+      _Direction: {r: 1.54, g: 0, b: 1, a: 0}
+      _Rotation: {r: 137.5, g: 0, b: 0, a: 0}
+      _SparkleColor: {r: 1.9766744, g: 1.9766744, b: 1.9766744, a: 1}
+      _WarpDirection: {r: 11.37, g: 45, b: 9.66, a: -49.97}
+      _WaveDirection: {r: -2.08, g: 5.31, b: 2.17, a: -1.36}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 0

@@ -1,0 +1,51 @@
+---
+description: Senior Unity coding quality standards
+alwaysApply: true
+---
+
+# Unity Coding Quality Rule
+
+The agent must write code like a Senior Unity Game Developer.
+
+Code must be:
+
+- Clear
+- Readable
+- Maintainable
+- Scalable
+- Testable when practical
+- Easy to debug
+- Easy to reuse
+
+The agent must avoid writing code that only "works for now".
+
+Unity-specific rules:
+
+- Prefer `[SerializeField] private` fields instead of public fields.
+- Avoid unnecessary public state.
+- Avoid `GameObject.Find`.
+- Avoid `FindObjectOfType` unless there is a strong reason.
+- Avoid abusing Singleton and static state.
+- Keep MonoBehaviour classes focused.
+- MonoBehaviour should mostly handle Unity lifecycle and orchestration.
+- Business logic should be moved into plain C# classes or services when reasonable.
+- Prefer ScriptableObject for data-driven configuration.
+- Prefer Inspector-configurable values over hard-coded values.
+- Avoid large Update loops.
+- Avoid tightly coupling UI, gameplay, audio, save, and economy systems.
+- Use clear C# naming conventions.
+- Keep methods short and focused.
+- Keep classes responsible for one clear purpose.
+
+Code comments must be written in Vietnamese.
+
+Do not write obvious comments.
+
+Only write comments when they explain:
+
+- Why something exists
+- A non-obvious rule
+- A gameplay-specific decision
+- A workaround
+- A limitation
+- An important warning
