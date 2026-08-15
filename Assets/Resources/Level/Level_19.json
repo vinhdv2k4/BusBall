@@ -1,0 +1,2050 @@
+{
+    "levelId":  19,
+    "busEnrichedDatas":  [
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  3.2920017,
+                                                  "z":  0,
+                                                  "x":  0
+                                              },
+                                 "Rotation":  90,
+                                 "BusData":  {
+                                                 "colorType":  7,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "0b0000000c0000000d0000000e000000",
+                                                      "depth":  7
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  3.2920017,
+                                                                           "x":  0
+                                                                       },
+                                                     "nearestT":  0.57124996,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  7.7920012,
+                                                                          "x":  -4.700164
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  1.0119994,
+                                                  "z":  0,
+                                                  "x":  -1.9000002
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  3,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  4,
+                                                      "busesBlockedByThis":  "08000000",
+                                                      "depth":  4
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  1.0119994,
+                                                                           "x":  -1.9000002
+                                                                       },
+                                                     "nearestT":  0.17125002,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  -1.8999995
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -0.84605145,
+                                                  "z":  0,
+                                                  "x":  -4.42
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  8,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "03000000",
+                                                      "depth":  2
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -0.84605145,
+                                                                           "x":  -4.42
+                                                                       },
+                                                     "nearestT":  0.60625,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  8.625276,
+                                                                          "x":  -4.42
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -2.7743835,
+                                                  "z":  0,
+                                                  "x":  -4.223731
+                                              },
+                                 "Rotation":  15,
+                                 "BusData":  {
+                                                 "colorType":  7,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "05000000",
+                                                      "depth":  3
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -2.7743835,
+                                                                           "x":  -4.223731
+                                                                       },
+                                                     "nearestT":  0.45125,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  3.5034373,
+                                                                          "x":  -4.700097
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -6.512,
+                                                  "z":  0,
+                                                  "x":  -3.268
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  5,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "",
+                                                      "depth":  5
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -6.512,
+                                                                           "x":  -3.268
+                                                                       },
+                                                     "nearestT":  0.59625,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.7101884,
+                                                                          "x":  -3.2679996
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -4.568544,
+                                                  "z":  0,
+                                                  "x":  -3.579258
+                                              },
+                                 "Rotation":  30,
+                                 "BusData":  {
+                                                 "colorType":  8,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "04000000",
+                                                      "depth":  4
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -4.568544,
+                                                                           "x":  -3.579258
+                                                                       },
+                                                     "nearestT":  0.40375003,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  1.8727715,
+                                                                          "x":  -4.700077
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  1.0505733,
+                                                  "z":  0,
+                                                  "x":  -4.207215
+                                              },
+                                 "Rotation":  345,
+                                 "BusData":  {
+                                                 "colorType":  3,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "0200000003000000",
+                                                      "depth":  1
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  1.0505733,
+                                                                           "x":  -4.207215
+                                                                       },
+                                                     "nearestT":  0.59875005,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.7149291,
+                                                                          "x":  -3.3593273
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  2.7457867,
+                                                  "z":  0,
+                                                  "x":  -3.5526273
+                                              },
+                                 "Rotation":  330,
+                                 "BusData":  {
+                                                 "colorType":  7,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  0,
+                                                      "busesBlockedByThis":  "00000000020000000400000006000000",
+                                                      "depth":  0
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  2.7457867,
+                                                                           "x":  -3.5526273
+                                                                       },
+                                                     "nearestT":  0.58124995,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999886,
+                                                                          "x":  -2.7130375
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  3.0639997,
+                                                  "z":  0,
+                                                  "x":  -1.9000005
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  3,
+                                                 "MechanicData":  [
+                                                                      {
+                                                                          "MechanicType":  2,
+                                                                          "CustomData":  ""
+                                                                      }
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  5,
+                                                      "busesBlockedByThis":  "00000000",
+                                                      "depth":  5
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  3.0639997,
+                                                                           "x":  -1.9000005
+                                                                       },
+                                                     "nearestT":  0.17125002,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  -1.8999996
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -1.0400004,
+                                                  "z":  0,
+                                                  "x":  -1.9000001
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  4,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  3,
+                                                      "busesBlockedByThis":  "0100000008000000",
+                                                      "depth":  3
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -1.0400004,
+                                                                           "x":  -1.9000001
+                                                                       },
+                                                     "nearestT":  0.17125002,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  -1.8999996
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -2.8640003,
+                                                  "z":  0,
+                                                  "x":  -1.8999999
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  7,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "010000000800000009000000",
+                                                      "depth":  2
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -2.8640003,
+                                                                           "x":  -1.8999999
+                                                                       },
+                                                     "nearestT":  0.17125002,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  -1.8999995
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  1.62,
+                                                  "z":  0,
+                                                  "x":  -0.6
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  4,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "0c0000000d0000000e000000",
+                                                      "depth":  8
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  1.62,
+                                                                           "x":  -0.6
+                                                                       },
+                                                     "nearestT":  0.52124995,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  -0.6
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -0.65999997,
+                                                  "z":  0,
+                                                  "x":  -0.6
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  5,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "0d0000000e000000",
+                                                      "depth":  9
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -0.65999997,
+                                                                           "x":  -0.6
+                                                                       },
+                                                     "nearestT":  0.52124995,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  -0.6
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -2.94,
+                                                  "z":  0,
+                                                  "x":  -0.6
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  3,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  3,
+                                                      "busesBlockedByThis":  "0e000000",
+                                                      "depth":  10
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -2.94,
+                                                                           "x":  -0.6
+                                                                       },
+                                                     "nearestT":  0.52124995,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  -0.6
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -5.22,
+                                                  "z":  0,
+                                                  "x":  -0.6
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  3,
+                                                 "MechanicData":  [
+                                                                      {
+                                                                          "MechanicType":  2,
+                                                                          "CustomData":  ""
+                                                                      }
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  4,
+                                                      "busesBlockedByThis":  "",
+                                                      "depth":  11
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -5.22,
+                                                                           "x":  -0.6
+                                                                       },
+                                                     "nearestT":  0.52124995,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  -0.6
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -4.6880007,
+                                                  "z":  0,
+                                                  "x":  -1.8999997
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  8,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "0100000008000000090000000a000000",
+                                                      "depth":  1
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -4.6880007,
+                                                                           "x":  -1.8999997
+                                                                       },
+                                                     "nearestT":  0.17125002,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  -1.8999995
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -6.512,
+                                                  "z":  0,
+                                                  "x":  -1.8999996
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  4,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  0,
+                                                      "busesBlockedByThis":  "0100000008000000090000000a0000000f000000",
+                                                      "depth":  0
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -6.512,
+                                                                           "x":  -1.8999996
+                                                                       },
+                                                     "nearestT":  0.17125002,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  -1.8999996
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -6.512,
+                                                  "z":  0,
+                                                  "x":  3.268
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  7,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "21000000",
+                                                      "depth":  5
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -6.512,
+                                                                           "x":  3.268
+                                                                       },
+                                                     "nearestT":  0.41374996,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  3.2679996
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -4.568544,
+                                                  "z":  0,
+                                                  "x":  3.579258
+                                              },
+                                 "Rotation":  330,
+                                 "BusData":  {
+                                                 "colorType":  5,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "11000000",
+                                                      "depth":  4
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -4.568544,
+                                                                           "x":  3.579258
+                                                                       },
+                                                     "nearestT":  0.16624999,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  -6.1273413,
+                                                                          "x":  4.700012
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -2.774384,
+                                                  "z":  0,
+                                                  "x":  4.223731
+                                              },
+                                 "Rotation":  345,
+                                 "BusData":  {
+                                                 "colorType":  6,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "12000000",
+                                                      "depth":  3
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -2.774384,
+                                                                           "x":  4.223731
+                                                                       },
+                                                     "nearestT":  0.21125,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  -4.496848,
+                                                                          "x":  4.700021
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -0.8460515,
+                                                  "z":  0,
+                                                  "x":  4.42
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  7,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "13000000",
+                                                      "depth":  2
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -0.8460515,
+                                                                           "x":  4.42
+                                                                       },
+                                                     "nearestT":  0.37624997,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.6525531,
+                                                                          "x":  4.42
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  1.059,
+                                                  "z":  0,
+                                                  "x":  4.235
+                                              },
+                                 "Rotation":  15,
+                                 "BusData":  {
+                                                 "colorType":  8,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "1300000014000000",
+                                                      "depth":  1
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  1.059,
+                                                                           "x":  4.235
+                                                                       },
+                                                     "nearestT":  0.41124997,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  3.3933713
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  2.754,
+                                                  "z":  0,
+                                                  "x":  3.697
+                                              },
+                                 "Rotation":  30,
+                                 "BusData":  {
+                                                 "colorType":  5,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  0,
+                                                      "busesBlockedByThis":  "1100000014000000150000001c000000",
+                                                      "depth":  0
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  2.754,
+                                                                           "x":  3.697
+                                                                       },
+                                                     "nearestT":  0.42625,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  2.8621516
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -6.5039997,
+                                                  "z":  0,
+                                                  "x":  1.9
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  6,
+                                                 "MechanicData":  [
+                                                                      {
+                                                                          "MechanicType":  2,
+                                                                          "CustomData":  ""
+                                                                      }
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  5,
+                                                      "busesBlockedByThis":  "21000000",
+                                                      "depth":  6
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -6.5039997,
+                                                                           "x":  1.9
+                                                                       },
+                                                     "nearestT":  0.45374998,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  1.9000001
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -4.5360003,
+                                                  "z":  0,
+                                                  "x":  1.9
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  3,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  4,
+                                                      "busesBlockedByThis":  "17000000",
+                                                      "depth":  5
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -4.5360003,
+                                                                           "x":  1.9
+                                                                       },
+                                                     "nearestT":  0.45374998,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  1.9000001
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -2.5600002,
+                                                  "z":  0,
+                                                  "x":  1.9
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  4,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  3,
+                                                      "busesBlockedByThis":  "1700000018000000",
+                                                      "depth":  4
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -2.5600002,
+                                                                           "x":  1.9
+                                                                       },
+                                                     "nearestT":  0.45374998,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  1.9000001
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -0.58400023,
+                                                  "z":  0,
+                                                  "x":  1.9
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  7,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "170000001800000019000000",
+                                                      "depth":  3
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -0.58400023,
+                                                                           "x":  1.9
+                                                                       },
+                                                     "nearestT":  0.45374998,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  1.9000001
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  1.6199996,
+                                                  "z":  0,
+                                                  "x":  1.9
+                                              },
+                                 "Rotation":  0,
+                                 "BusData":  {
+                                                 "colorType":  8,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "1700000018000000190000001a000000",
+                                                      "depth":  2
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  1.6199996,
+                                                                           "x":  1.9
+                                                                       },
+                                                     "nearestT":  0.45374998,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  0.69999933,
+                                                                          "x":  1.9000001
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  3.2920017,
+                                                  "z":  0,
+                                                  "x":  1.91
+                                              },
+                                 "Rotation":  270,
+                                 "BusData":  {
+                                                 "colorType":  4,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  1
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "1700000018000000190000001a0000001b000000",
+                                                      "depth":  1
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  3.2920017,
+                                                                           "x":  1.91
+                                                                       },
+                                                     "nearestT":  0.33124998,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  -0.20799851,
+                                                                          "x":  4.7001476
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  1.59,
+                                                  "z":  0,
+                                                  "x":  0.6
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  3,
+                                                 "MechanicData":  [
+                                                                      {
+                                                                          "MechanicType":  2,
+                                                                          "CustomData":  ""
+                                                                      }
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  4,
+                                                      "busesBlockedByThis":  "",
+                                                      "depth":  17
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  1.59,
+                                                                           "x":  0.6
+                                                                       },
+                                                     "nearestT":  0.10125001,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  0.6000008
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -0.6899997,
+                                                  "z":  0,
+                                                  "x":  0.6
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  4,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  3,
+                                                      "busesBlockedByThis":  "1d000000",
+                                                      "depth":  16
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -0.6899997,
+                                                                           "x":  0.6
+                                                                       },
+                                                     "nearestT":  0.10125001,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  0.6000006
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -2.9699998,
+                                                  "z":  0,
+                                                  "x":  0.6
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  8,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "1d0000001e000000",
+                                                      "depth":  15
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -2.9699998,
+                                                                           "x":  0.6
+                                                                       },
+                                                     "nearestT":  0.10125001,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  0.6000004
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -5.2499995,
+                                                  "z":  0,
+                                                  "x":  0.6
+                                              },
+                                 "Rotation":  180,
+                                 "BusData":  {
+                                                 "colorType":  4,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  1,
+                                                      "busesBlockedByThis":  "1d0000001e0000001f000000",
+                                                      "depth":  14
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -5.2499995,
+                                                                           "x":  0.6
+                                                                       },
+                                                     "nearestT":  0.10125001,
+                                                     "splineContainerIndex":  0,
+                                                     "nearestPoint":  {
+                                                                          "y":  -3,
+                                                                          "x":  0.60000026
+                                                                      }
+                                                 }
+                             },
+                             {
+                                 "Type":  0,
+                                 "Position":  {
+                                                  "y":  -6.892002,
+                                                  "z":  0,
+                                                  "x":  0
+                                              },
+                                 "Rotation":  270,
+                                 "BusData":  {
+                                                 "colorType":  5,
+                                                 "MechanicData":  [
+
+                                                                  ],
+                                                 "mechanicType":  0,
+                                                 "busType":  2
+                                             },
+                                 "GarageData":  {
+                                                    "Buses":  [
+
+                                                              ]
+                                                },
+                                 "AnalysisData":  {
+                                                      "blockedBusCount":  2,
+                                                      "busesBlockedByThis":  "1d0000001e0000001f00000020000000",
+                                                      "depth":  13
+                                                  },
+                                 "BusPathData":  {
+                                                     "startPosition":  {
+                                                                           "y":  -6.892002,
+                                                                           "x":  0
+                                                                       },
+                                                     "nearestT":  0.04875,
+                                                     "splineContainerIndex":  1,
+                                                     "nearestPoint":  {
+                                                                          "y":  -10.392003,
+                                                                          "x":  4.698991
+                                                                      }
+                                                 }
+                             }
+                         ],
+    "garageEnrichedDatas":  [
+
+                            ],
+    "topGameConfig":  {
+                              "boxLaneConfigs":  [
+                                                     {
+                                                         "boxDataConfigs":  [
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  6,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  6,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                }
+                                                                            ]
+                                                     },
+                                                     {
+                                                         "boxDataConfigs":  [
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  6,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  6,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                }
+                                                                            ]
+                                                     },
+                                                     {
+                                                         "boxDataConfigs":  [
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  6,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                }
+                                                                            ]
+                                                     },
+                                                     {
+                                                         "boxDataConfigs":  [
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  6,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  5,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  7,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  4,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  8,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "colorType":  3,
+                                                                                    "mechanicData":  [
+                          
+                                                                                                     ]
+                                                                                }
+                                                                            ]
+                                                     }
+                                                 ]
+                          }
+}

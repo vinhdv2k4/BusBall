@@ -11,7 +11,9 @@ public class PrefabSO : ScriptableObject
 
     [Header("Future gameplay prefabs")]
     [SerializeField] private GameObject prfBox;
+    [SerializeField] private Box boxPrefab;
     [SerializeField] private GameObject prfBoxLane;
+    [SerializeField] private BoxLane boxLanePrefab;
     [SerializeField] private GameObject garage;
     [SerializeField] private GameObject iceCube;
 
@@ -29,6 +31,8 @@ public class PrefabSO : ScriptableObject
     public GameObject GetGarage() => garage;
     public BallController GetBall() => prfBall;
     public GameObject GetBox() => prfBox;
+    public Box GetBoxPrefab() => boxPrefab != null ? boxPrefab : prfBox?.GetComponent<Box>();
     public GameObject GetBoxLane() => prfBoxLane;
+    public BoxLane GetBoxLanePrefab() => boxLanePrefab != null ? boxLanePrefab : prfBoxLane?.GetComponent<BoxLane>();
     public GameObject GetIceCube() => iceCube;
 }

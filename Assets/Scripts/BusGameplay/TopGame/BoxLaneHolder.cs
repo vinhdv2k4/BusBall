@@ -3,18 +3,22 @@ using UnityEngine;
 
 public class BoxLaneHolder : MonoBehaviour
 {
-    [SerializeField] private List<BoxLane> boxLanes = new();
+    [HideInInspector] private readonly List<BoxLane> boxLanes = new();
+    [SerializeField] private PrefabSO prefabSO;
     public List<BoxLane> LstBoxLanes => boxLanes;
 
-    public void Init(TopGameConfigData topLevelConfig)
+    public void Init(TopGameConfigData topLevelConfig, PrefabSO prefabDatabase = null)
     {
+        if (prefabDatabase != null) prefabSO = prefabDatabase;
         ResetData();
         if (topLevelConfig?.boxLaneConfigs == null) return;
         foreach (BoxLaneConfigData config in topLevelConfig.boxLaneConfigs)
         {
-            BoxLane lane = new GameObject("BoxLane").AddComponent<BoxLane>();
+            BoxLane lane = prefabSO?.GetBoxLanePrefab() != null
+                ? Instantiate(prefabSO.GetBoxLanePrefab(), transform)
+                : new GameObject("BoxLane").AddComponent<BoxLane>();
             lane.transform.SetParent(transform, false);
-            lane.Init(config);
+            lane.Init(config, prefabSO != null ? prefabSO.GetBoxPrefab()?.gameObject : null);
             boxLanes.Add(lane);
         }
     }

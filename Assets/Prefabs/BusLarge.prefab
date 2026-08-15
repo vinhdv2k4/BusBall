@@ -897,7 +897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4808113985169905
 Transform:
   m_ObjectHideFlags: 0
@@ -982,7 +982,7 @@ GameObject:
   m_Layer: 0
   m_Name: BallPos (8)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1073,6 +1073,7 @@ MonoBehaviour:
   iconTop: {fileID: 212291844617409189}
   decoyBus: {fileID: 5908443040672877267}
   splineAnimate: {fileID: 5211240808934088784}
+  roadPath: {fileID: 0}
   busAnimationController: {fileID: 7577024877737444926}
   tfReleaseBall: {fileID: 4689364072382846}
   tfLanding: {fileID: 4215879266689626}
@@ -1096,6 +1097,12 @@ MonoBehaviour:
   - {fileID: 1061268324235159}
   dropParent: {fileID: 0}
   funnel: {fileID: 0}
+  topGameController: {fileID: 0}
+  busManager: {fileID: 0}
+  blockMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  enableClickInput: 1
 --- !u!65 &65711914853252429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1155,12 +1162,6 @@ MonoBehaviour:
   topAnimation: {fileID: 111841364053301648}
   releaseVfx: {fileID: 0}
   landingVfx: {fileID: 0}
-  idleState: Idle
-  blockedState: Blocked
-  hitLeftState: Hit_Left
-  hitRightState: Hit_Right
-  hitFrontState: Hit_Front
-  hitBackState: Hit_Back
 --- !u!114 &5211240808934088784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1177,7 +1178,7 @@ MonoBehaviour:
   m_PlayOnAwake: 0
   m_LoopMode: 0
   m_Method: 0
-  m_Duration: 1
+  m_Duration: 2
   m_MaxSpeed: 10
   m_EasingMode: 0
   m_AlignmentMode: 1

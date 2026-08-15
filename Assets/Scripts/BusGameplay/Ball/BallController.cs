@@ -18,11 +18,14 @@ public class BallController : MonoBehaviour
 
     public ColorType ColorType => colorType;
     public ColorType Color => colorType;
+    public Rigidbody2D Rb => body;
+    public CircleCollider2D CirCollider => ballCollider;
     public DockSlot Slot { get; private set; }
     public bool IsDockAnimationCompleted { get; private set; }
     public bool IsDocked => Slot != null;
     public bool IsDockedOnBox => false;
     public bool IsCompacting { get; private set; }
+    public bool IsMoving => movementRoutine != null;
     public Vector3 StartScale => startScale;
 
     private void Awake()
@@ -34,19 +37,75 @@ public class BallController : MonoBehaviour
         defaultMass = body != null ? body.mass : 1f;
     }
 
-    public void Initialize(ColorType newColor) { colorType = newColor; ResetData(); }
+    public void Initialize(ColorType newColor, bool activatePhysics = true)
+    {
+        colorType = newColor;
+        ResetData(activatePhysics);
+
+        string matName = GetMaterialNameSuffix(newColor);
+        if (!string.IsNullOrEmpty(matName))
+        {
+            string path = $"Materials/Color/M_Color_{matName}";
+            Material mat = Resources.Load<Material>(path);
+            if (mat != null)
+            {
+                if (smoothOutlineApplier != null)
+                {
+                    smoothOutlineApplier.SetDefaultOutline(mat);
+                    Debug.Log($"Ball {name}: Loaded and applied ball material {path}");
+                }
+                else
+                {
+                    Debug.LogWarning($"Ball {name}: smoothOutlineApplier is null!");
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Ball {name}: Failed to load ball material {path}!");
+            }
+        }
+        else
+        {
+            Debug.Log($"Ball {name}: matName suffix is null/empty for colorType={newColor}");
+        }
+    }
+
+    private string GetMaterialNameSuffix(ColorType colorType)
+    {
+        return colorType switch
+        {
+            ColorType.Red => "Red",
+            ColorType.Green => "Green",
+            ColorType.Blue => "Blue",
+            ColorType.Yellow => "Yellow",
+            ColorType.Purple => "Purple",
+            ColorType.Orange => "Orange",
+            ColorType.Pink => "Pink",
+            ColorType.Cyan => "BlueLight",
+            ColorType.Forest => "GreenLight",
+            ColorType.Brown => "Brown",
+            ColorType.Black => "Black",
+            _ => null
+        };
+    }
 
     public void Dock(DockSlot slot, bool turnOnCollider = true, Action onComplete = null)
     {
         if (slot == null || !slot.CanAccept(this)) return;
         KillAllMovementTweens();
         Slot = slot;
+        transform.SetParent(slot.transform, true);
         IsDockAnimationCompleted = false;
         SetColliders(turnOnCollider);
         DisablePhysics();
         movementRoutine = StartCoroutine(MoveRoutine(slot.transform.position, 0.12f, false, () =>
         {
-            transform.rotation = slot.transform.rotation;
+            // Reset the ball to the slot's local origin so it stays centered
+            // while following the conveyor spline.
+            transform.localPosition = Vector3.zero;
+            // The ball follows both the position and rotation of the conveyor slot.
+            // Keep its local rotation neutral so the slot's spline rotation drives it.
+            transform.localRotation = Quaternion.identity;
             IsDockAnimationCompleted = true;
             onComplete?.Invoke();
         }));
@@ -118,6 +177,7 @@ public class BallController : MonoBehaviour
     public void Undock()
     {
         KillAllMovementTweens();
+        transform.SetParent(null, true);
         Slot = null;
         IsDockAnimationCompleted = false;
         SetColliders(true);
@@ -129,7 +189,7 @@ public class BallController : MonoBehaviour
     public void OnDespawned() => ResetData();
     public void Release() => OnDespawned();
 
-    private void ResetData()
+    private void ResetData(bool activatePhysics = true)
     {
         KillAllMovementTweens();
         Slot = null;
@@ -137,8 +197,16 @@ public class BallController : MonoBehaviour
         IsCompacting = false;
         transform.localScale = startScale == Vector3.zero ? Vector3.one : startScale;
         ResetMass();
-        EnablePhysics();
-        SetColliders(true);
+        if (activatePhysics)
+        {
+            EnablePhysics();
+            SetColliders(true);
+        }
+        else
+        {
+            DisablePhysics();
+            SetColliders(false);
+        }
         SetReviveOutline(false);
     }
 

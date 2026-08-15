@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelJsonLoader : MonoBehaviour
@@ -46,7 +47,8 @@ public class LevelJsonLoader : MonoBehaviour
         }
 
         CurrentLevel = parsed;
-        topGameController?.Init(parsed.topGameConfig, conveyorSlotCapacity);
+        topGameController?.Init(parsed.topGameConfig, conveyorSlotCapacity, prefabSO);
+        List<Bus> spawnedBuses = new();
         for (int i = 0; i < parsed.busEnrichedDatas.Length; i++)
         {
             BusOutObjectEnrichedData entry = parsed.busEnrichedDatas[i];
@@ -60,10 +62,33 @@ public class LevelJsonLoader : MonoBehaviour
             }
 
             Transform objectRoot = level != null ? level.ObjectRoot : transform;
-            Bus bus = Instantiate(prefab, entry.Position, Quaternion.Euler(0f, entry.Rotation, 0f), objectRoot);
-            bus.Configure(entry.BusData, entry.Position, entry.Rotation);
+            Bus bus = ObjectPool.Spawn(prefab, objectRoot, entry.Position,
+                Quaternion.Euler(0f, 0f, entry.Rotation));
+            bus.Configure(entry.BusData, entry.AnalysisData, entry.BusPathData,
+                entry.Position, entry.Rotation);
+            bus.SetBallPrefab(prefabSO.GetBall());
+            bus.SetLevelIndex(i);
+            spawnedBuses.Add(bus);
             if (startBusesImmediately) bus.StartMoveStraight();
         }
+
+        foreach (Bus bus in spawnedBuses)
+            bus.ClearBlockingBuses();
+
+        for (int i = 0; i < spawnedBuses.Count; i++)
+        {
+            Bus sourceBus = spawnedBuses[i];
+            foreach (int blockedIndex in sourceBus.AnalysisData.GetBlockedBusIndices())
+            {
+                if (blockedIndex >= 0 && blockedIndex < spawnedBuses.Count)
+                {
+                    Bus blockedBus = spawnedBuses[blockedIndex];
+                    sourceBus.AddBlockedBus(blockedBus);
+                    blockedBus.AddBlockingBus(sourceBus);
+                }
+            }
+        }
+
         return true;
     }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a57d4ef940d7d4180a390ad78daf9f, type: 3}
+  m_Name: VfxSO
+  m_EditorClassIdentifier: Assembly-CSharp::VfxSO
+  vfxBoxDie: {fileID: 198703437598541787, guid: 99f66c68438e9194ab2edadacc2a28b9, type: 3}
+  vfxBusLargeLanding: {fileID: 0}
+  vfxBusMediumLanding: {fileID: 0}
+  vfxBusSmallLanding: {fileID: 0}
+  vfxBusReleaseBall: {fileID: 198703437598541787, guid: 99f66c68438e9194ab2edadacc2a28b9, type: 3}
+  vfxBusSmoke: {fileID: 0}
+  vfxHurryBusSmoke: {fileID: 198724804207875695, guid: 00b3279e61a7dea4d86053a4d470807a, type: 3}
+  vfxBusHit: {fileID: 198884547391421755, guid: dd7f4b0f7381ca242944cac356e56f16, type: 3}
+  vfxRevealBus: {fileID: 0}
+  vfxElectric: {fileID: 0}
+  vfxIceBreak: {fileID: 0}
+  vfxStuckBus: {fileID: 0}

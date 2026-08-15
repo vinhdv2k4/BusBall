@@ -27,7 +27,7 @@ public class DockSlot : MonoBehaviour
         if (!CanAcceptBall || candidate == null) return false;
         ball = candidate;
         candidate.Dock(this, snap);
-        conveyor?.NotifyBallDocked(this);
+        conveyor?.OnBallDocked(SlotIndex);
         return true;
     }
 

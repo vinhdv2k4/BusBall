@@ -13,10 +13,10 @@ public class BusData
     {
         return type switch
         {
-            BusType.Small => 3,
-            BusType.Medium => 6,
-            BusType.Large => 9,
-            _ => 3
+            BusType.Small => 6,
+            BusType.Medium => 9,
+            BusType.Large => 12,
+            _ => 6
         };
     }
 

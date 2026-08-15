@@ -24,7 +24,60 @@ public class Box : MonoBehaviour
     {
         colorType = color;
         IsFull = false;
+        ApplyColorMaterial();
+        boxAnimationController?.PlayBorn();
         UpdateMechanic();
+    }
+
+    private void ApplyColorMaterial()
+    {
+        string suffix = GetMaterialNameSuffix(colorType);
+        if (string.IsNullOrEmpty(suffix))
+        {
+            Debug.LogWarning($"Box {name}: invalid color type {colorType}.", this);
+            return;
+        }
+
+        string colorPath = $"Materials/Color/M_Color_{suffix}";
+        string glassPath = $"Materials/Glass/M_Glass_{suffix}";
+        Material colorMaterial = Resources.Load<Material>(colorPath);
+        Material glassMaterial = Resources.Load<Material>(glassPath);
+        if (colorMaterial == null || glassMaterial == null)
+        {
+            Debug.LogWarning(
+                $"Box {name}: failed to load materials. Color={colorPath}, Glass={glassPath}.",
+                this);
+            return;
+        }
+
+        foreach (MeshRenderer renderer in mrBoxes)
+        {
+            if (renderer == null) continue;
+            renderer.sharedMaterials = new[] { colorMaterial, glassMaterial };
+        }
+
+        // Slot meshes use the body color unless they have their own material setup.
+        foreach (MeshRenderer renderer in mrBoxSlots)
+            if (renderer != null) renderer.sharedMaterial = colorMaterial;
+    }
+
+    private static string GetMaterialNameSuffix(ColorType color)
+    {
+        return color switch
+        {
+            ColorType.Red => "Red",
+            ColorType.Green => "Green",
+            ColorType.Blue => "Blue",
+            ColorType.Yellow => "Yellow",
+            ColorType.Purple => "Purple",
+            ColorType.Orange => "Orange",
+            ColorType.Pink => "Pink",
+            ColorType.Cyan => "BlueLight",
+            ColorType.Forest => "GreenLight",
+            ColorType.Brown => "Brown",
+            ColorType.Black => "Black",
+            _ => null
+        };
     }
 
     public bool TryReceiveBall(BallController ball)
@@ -44,6 +97,7 @@ public class Box : MonoBehaviour
     public void PlayDieVfx()
     {
         if (tfBoxDieVfx != null) tfBoxDieVfx.gameObject.SetActive(true);
+        VfxManager.Play(VfxType.BoxDie, transform.position);
         boxAnimationController?.PlayComplete();
     }
 

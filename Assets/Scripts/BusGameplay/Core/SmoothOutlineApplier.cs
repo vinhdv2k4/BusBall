@@ -24,4 +24,10 @@ public class SmoothOutlineApplier : MonoBehaviour
         foreach (Renderer target in targetRenderers)
             if (target != null) target.sharedMaterial = material;
     }
+
+    public void SetDefaultOutline(Material material)
+    {
+        defaultOutline = material;
+        SetReviveOutline(false);
+    }
 }

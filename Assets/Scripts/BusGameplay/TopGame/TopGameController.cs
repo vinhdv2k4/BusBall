@@ -22,9 +22,9 @@ public class TopGameController : MonoBehaviour
     public BoxLaneHolder BoxLaneHolder => boxLaneHolder;
     public FunnelController FunnelController => funnelController;
 
-    public void Init(TopGameConfigData topGameConfig, int conveyorSlotCapacity)
+    public void Init(TopGameConfigData topGameConfig, int conveyorSlotCapacity, PrefabSO prefabSO = null)
     {
-        boxLaneHolder?.Init(topGameConfig);
+        boxLaneHolder?.Init(topGameConfig, prefabSO);
         conveyorCapacity = Mathf.Max(0, conveyorSlotCapacity);
         conveyorColorCounts.Clear();
         occupiedConveyorSlots = 0;
@@ -42,7 +42,6 @@ public class TopGameController : MonoBehaviour
         occupiedConveyorSlots++;
         if (!conveyorColorCounts.ContainsKey(ball.ColorType)) conveyorColorCounts[ball.ColorType] = 0;
         conveyorColorCounts[ball.ColorType]++;
-        boxLaneHolder?.TryConsumeBall(ball.ColorType);
         UpdateConveyorText();
     }
 

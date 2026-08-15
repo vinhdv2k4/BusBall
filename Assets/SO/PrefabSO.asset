@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbb356de68958046b507206f11ae42e, type: 3}
   m_Name: PrefabSO
   m_EditorClassIdentifier: Assembly-CSharp::PrefabSO
-  prfBall: {fileID: 0}
-  smallBus: {fileID: 0}
-  mediumBus: {fileID: 0}
-  largeBus: {fileID: 0}
-  prfBox: {fileID: 0}
-  prfBoxLane: {fileID: 0}
-  garage: {fileID: 0}
+  prfBall: {fileID: 114099118695303065, guid: a64b2620bf1000e45865c9014a8aeec5, type: 3}
+  smallBus: {fileID: 2718089079615727902, guid: f5d763493d74a5549ae055aed2acb5a9, type: 3}
+  mediumBus: {fileID: 1743987072690326736, guid: 70ca4075b109ae24286406dda24c1b3c, type: 3}
+  largeBus: {fileID: 114642988549198181, guid: e0fa67cd18633e244ab5c81ca723fddd, type: 3}
+  prfBox: {fileID: 1709254077376921, guid: 2e1f3d814f862a04cb0d6f0943bd2de4, type: 3}
+  boxPrefab: {fileID: 8615602838960495587, guid: 2e1f3d814f862a04cb0d6f0943bd2de4, type: 3}
+  prfBoxLane: {fileID: 1709254077376921, guid: a8e1c1ba54df02d4280b09750d903c40, type: 3}
+  garage: {fileID: 1709254077376921, guid: 82e5c4d3b6fe8124e964bd63888676a1, type: 3}
   iceCube: {fileID: 0}
