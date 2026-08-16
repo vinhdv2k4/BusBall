@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-using DG.Tweening;
 
 public class BoxLane : MonoBehaviour
 {
@@ -38,7 +37,7 @@ public class BoxLane : MonoBehaviour
         nextConfigIndex = 0;
         boxLaneDetector?.Initialize(this);
         if (animator == null) animator = GetComponent<Animator>();
-        for (int i = 0; i < maxBoxCount; i++)
+        for (int i = 0; i < GetVisibleBoxCapacity(); i++)
             if (!SpawnNextBox(boxPrefab)) break;
         if (boxes.Count > 0 && boxes[0] != null)
             boxes[0].PlayAsFirstBox();
@@ -49,9 +48,14 @@ public class BoxLane : MonoBehaviour
     private bool SpawnNextBox(GameObject boxPrefab)
     {
         if (boxPrefab == null || nextConfigIndex >= configs.Count) return false;
-        GameObject go = Instantiate(boxPrefab, boxHolder != null ? boxHolder : transform);
+        GameObject go = ObjectPool.Spawn(
+            boxPrefab,
+            boxHolder != null ? boxHolder : transform,
+            boxStart != null ? boxStart.position : transform.position,
+            boxStart != null ? boxStart.rotation : transform.rotation);
         Box box = go.GetComponent<Box>();
-        if (box == null) { Destroy(go); return false; }
+        if (box == null) { ObjectPool.Recycle(go); return false; }
+        box.ResetData();
         box.Initialize(configs[nextConfigIndex++].colorType, box.Slots.Count);
         boxes.Add(box);
         return true;
@@ -126,6 +130,7 @@ public class BoxLane : MonoBehaviour
         {
             reservedSlots.Remove(targetSlot);
             receivingBalls.Remove(ball);
+            GameSoundManager.Instance?.PlayBlockPut();
             if (boxes.Contains(box) && box == GetFirstBox() &&
                 !completingBoxes.Contains(box) && box.RefreshFullState())
             {
@@ -133,6 +138,7 @@ public class BoxLane : MonoBehaviour
                 Debug.Log(
                     $"[BOX COMPLETE START] lane={name}, box={box.name}, color={box.ColorType}",
                     box);
+                GameSoundManager.Instance?.PlayBoxComplete();
                 PlayGateClose();
                 StartCoroutine(CompleteBoxRoutine(box));
             }
@@ -204,7 +210,9 @@ public class BoxLane : MonoBehaviour
         reservedSlots.Clear();
         receivingBalls.Clear();
         completingBoxes.Remove(box);
-        box.ResetData(); Destroy(box.gameObject);
+        box.ResetData();
+        ObjectPool.Recycle(box.gameObject);
+        ReflowStackLayout();
         SpawnNextBox(runtimeBoxPrefab);
         ReflowStackLayout();
         RefreshBoxVisibility();
@@ -213,9 +221,10 @@ public class BoxLane : MonoBehaviour
     private Vector3 GetPosition(int index)
     {
         if (boxStart == null || boxEnd == null) return transform.position;
-        int denominator = Mathf.Max(1, maxBoxCount - 1);
+        int denominator = Mathf.Max(1, maxBoxCount);
         // Config[0] is the first box processed at EndPoint.
-        // The last queued box stays hidden at StartPoint.
+        // Divide the Start-to-End path into maxBoxCount segments, leaving the
+        // StartPoint free for the next box to spawn before it moves into the stack.
         float normalized = 1f - index / (float)denominator;
         return Vector3.Lerp(boxStart.position, boxEnd.position, normalized);
     }
@@ -227,8 +236,7 @@ public class BoxLane : MonoBehaviour
         {
             if (boxes[i] == null) continue;
             Box movingBox = boxes[i];
-            bool isHiddenHolderBox = configs.Count >= 5 && i == boxes.Count - 1;
-            movingBox.gameObject.SetActive(!isHiddenHolderBox);
+            movingBox.gameObject.SetActive(true);
             movingBox.transform.DOKill();
             Tween moveTween = movingBox.transform.DOMove(GetPosition(i), duration)
                 .SetEase(Ease.OutQuad);
@@ -239,17 +247,21 @@ public class BoxLane : MonoBehaviour
 
     private void RefreshBoxVisibility()
     {
-        // Only lanes with five or more configured boxes keep a hidden queue box
-        // at the holder/start point. Four-box lanes show every box.
-        bool hideHolderBox = configs.Count >= 5;
         for (int i = 0; i < boxes.Count; i++)
             if (boxes[i] != null)
-                boxes[i].gameObject.SetActive(!hideHolderBox || i < boxes.Count - 1);
+                boxes[i].gameObject.SetActive(true);
     }
+
+    private int GetVisibleBoxCapacity() => Mathf.Max(1, maxBoxCount - 1);
 
     private void ClearBoxes()
     {
-        foreach (Box box in boxes) if (box != null) Destroy(box.gameObject);
+        foreach (Box box in boxes)
+        {
+            if (box == null) continue;
+            box.ResetData();
+            ObjectPool.Recycle(box.gameObject);
+        }
         boxes.Clear();
     }
 }

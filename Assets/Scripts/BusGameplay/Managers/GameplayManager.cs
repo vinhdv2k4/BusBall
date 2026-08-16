@@ -17,6 +17,16 @@ public class GameplayManager : MonoBehaviour
 
     private void Start() { LoadLevel(); }
 
+    private void Update()
+    {
+        if (State != GameplayState.Playing || topGameController == null) return;
+
+        if (topGameController.IsWin())
+            ChangeState(GameplayState.Won);
+        else if (topGameController.IsStuckConvayor())
+            ChangeState(GameplayState.Lost);
+    }
+
     public void LoadLevel()
     {
         State = GameplayState.Loading;

@@ -42,23 +42,48 @@ public class Box : MonoBehaviour
         string glassPath = $"Materials/Glass/M_Glass_{suffix}";
         Material colorMaterial = Resources.Load<Material>(colorPath);
         Material glassMaterial = Resources.Load<Material>(glassPath);
-        if (colorMaterial == null || glassMaterial == null)
+        if (colorMaterial == null)
         {
-            Debug.LogWarning(
-                $"Box {name}: failed to load materials. Color={colorPath}, Glass={glassPath}.",
-                this);
+            Debug.LogWarning($"Box {name}: failed to load color material. Color={colorPath}.", this);
             return;
         }
+
+        glassMaterial ??= Resources.Load<Material>("Materials/Glass/M_Glass_White");
 
         foreach (MeshRenderer renderer in mrBoxes)
         {
             if (renderer == null) continue;
-            renderer.sharedMaterials = new[] { colorMaterial, glassMaterial };
+            ApplyBoxRendererMaterials(renderer, colorMaterial, glassMaterial);
         }
 
         // Slot meshes use the body color unless they have their own material setup.
         foreach (MeshRenderer renderer in mrBoxSlots)
             if (renderer != null) renderer.sharedMaterial = colorMaterial;
+    }
+
+    private static void ApplyBoxRendererMaterials(
+        MeshRenderer renderer,
+        Material colorMaterial,
+        Material glassMaterial)
+    {
+        Material[] materials = renderer.sharedMaterials;
+        if (materials == null || materials.Length == 0)
+        {
+            renderer.sharedMaterial = colorMaterial;
+            return;
+        }
+
+        for (int i = 0; i < materials.Length; i++)
+        {
+            Material current = materials[i];
+            string materialName = current != null ? current.name : string.Empty;
+            if (materialName.StartsWith("M_Glass_"))
+                materials[i] = glassMaterial;
+            else
+                materials[i] = colorMaterial;
+        }
+
+        renderer.sharedMaterials = materials;
     }
 
     private static string GetMaterialNameSuffix(ColorType color)
@@ -133,8 +158,10 @@ public class Box : MonoBehaviour
             if (ball != null)
             {
                 ball.KillAllMovementTweens();
+                ball.Release();
                 ObjectPool.Recycle(ball.gameObject);
             }
+            slot?.Clear();
         }
         if (tfBoxDieVfx != null) tfBoxDieVfx.gameObject.SetActive(false);
         boxAnimationController?.ResetToIdle();

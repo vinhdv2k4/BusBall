@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,14 +8,20 @@ public class DockSlotConveyor : MonoBehaviour
 {
     [SerializeField] private List<DockSlot> dockSlots = new();
     [SerializeField] private float compactDuration = 0.15f;
-    [SerializeField, Range(0f, 1f)] private float debugSplineProgress = 0.85f;
-    [SerializeField, Min(0.001f)] private float debugProgressTolerance = 0.03f;
 
     private int _leaderSlotIndex;
+    private float speedMultiplier = 1f;
 
     public IReadOnlyList<DockSlot> Slots => dockSlots;
     public int Count => dockSlots.Count;
+    public int BallCount => dockSlots.Count(slot => slot != null && slot.HasBall);
     public int LeaderSlotIndex => _leaderSlotIndex;
+    public event Action BallCountChanged;
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = Mathf.Max(0.01f, multiplier);
+    }
 
     public bool HasReachedProgress(BallController ball, float requiredProgress)
     {
@@ -22,20 +29,6 @@ public class DockSlotConveyor : MonoBehaviour
         SplineAnimate spline = ball.Slot.GetComponent<SplineAnimate>();
         if (spline == null) return false;
         return spline.NormalizedTime >= Mathf.Clamp01(requiredProgress);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        foreach (DockSlot slot in GetComponentsInChildren<DockSlot>(true))
-        {
-            if (slot == null) continue;
-            SplineAnimate spline = slot.GetComponent<SplineAnimate>();
-            if (spline == null) continue;
-
-            float distance = Mathf.Abs(spline.NormalizedTime - debugSplineProgress);
-            Gizmos.color = distance <= debugProgressTolerance ? Color.green : Color.yellow;
-            Gizmos.DrawWireSphere(slot.transform.position, 0.08f);
-        }
     }
 
     private void Awake()
@@ -96,6 +89,7 @@ public class DockSlotConveyor : MonoBehaviour
     {
         if (slotIndex < 0 || slotIndex >= dockSlots.Count) return;
         NotifyBallDocked(dockSlots[slotIndex]);
+        BallCountChanged?.Invoke();
     }
 
     public void NotifyBallReleased(DockSlot slot)
@@ -110,6 +104,7 @@ public class DockSlotConveyor : MonoBehaviour
         // The released ball leaves the conveyor without pulling the remaining
         // balls backwards. The next logical slot becomes the new leader.
         _leaderSlotIndex = GetNextSlotIndex(slotIndex, 1, dockSlots.Count);
+        BallCountChanged?.Invoke();
     }
 
     private void AdvanceLeaderFrom(int releasedIndex)
@@ -151,7 +146,7 @@ public class DockSlotConveyor : MonoBehaviour
 
         BallController follower = sourceSlot.ReleaseBall(false);
         targetSlot.SetBall(follower);
-        follower.MoveToConveyorSlotLinear(targetSlot, compactDuration);
+        follower.MoveToConveyorSlotLinear(targetSlot, compactDuration / speedMultiplier);
     }
 
     private static int GetNextSlotIndex(int startIndex, int offset, int slotCount)

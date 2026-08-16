@@ -15,6 +15,10 @@ public class TopGameController : MonoBehaviour
     private readonly Dictionary<ColorType, int> conveyorColorCounts = new();
     private int occupiedConveyorSlots;
     private int conveyorCapacity;
+    private int expectedBusReleaseCount;
+    private int releasedBusCount;
+    private bool conveyorSpeedIncreased;
+    private DockSlotConveyor subscribedConveyor;
 
     public Transform BallStart => ballStart;
     public Transform TopAnchor => topAnchor;
@@ -22,13 +26,53 @@ public class TopGameController : MonoBehaviour
     public BoxLaneHolder BoxLaneHolder => boxLaneHolder;
     public FunnelController FunnelController => funnelController;
 
-    public void Init(TopGameConfigData topGameConfig, int conveyorSlotCapacity, PrefabSO prefabSO = null)
+    private void Start()
+    {
+        RefreshConveyorReference();
+        RefreshConveyorState();
+    }
+
+    private void Update()
+    {
+        // The conveyor owns the source of truth; polling also covers runtime
+        // hierarchy initialization order and direct slot changes.
+        RefreshConveyorReference();
+        RefreshConveyorState();
+    }
+
+    public void Init(TopGameConfigData topGameConfig, PrefabSO prefabSO = null)
     {
         boxLaneHolder?.Init(topGameConfig, prefabSO);
-        conveyorCapacity = Mathf.Max(0, conveyorSlotCapacity);
+        RefreshConveyorReference();
         conveyorColorCounts.Clear();
         occupiedConveyorSlots = 0;
-        UpdateConveyorText();
+        expectedBusReleaseCount = 0;
+        releasedBusCount = 0;
+        conveyorSpeedIncreased = false;
+        funnelController?.SetConveyorSpeedMultiplier(1f);
+        RefreshConveyorState();
+    }
+
+    private void OnDestroy()
+    {
+        if (subscribedConveyor != null)
+            subscribedConveyor.BallCountChanged -= RefreshConveyorState;
+    }
+
+    public void SetExpectedBusReleaseCount(int count)
+    {
+        expectedBusReleaseCount = Mathf.Max(0, count);
+    }
+
+    public void NotifyBusReleasedBalls()
+    {
+        releasedBusCount++;
+        if (conveyorSpeedIncreased || expectedBusReleaseCount <= 0 ||
+            releasedBusCount < expectedBusReleaseCount)
+            return;
+
+        conveyorSpeedIncreased = true;
+        funnelController?.SetConveyorSpeedMultiplier(2f);
     }
 
     public bool IsWin()
@@ -38,23 +82,15 @@ public class TopGameController : MonoBehaviour
 
     public void OnDockBall(BallController ball)
     {
-        if (ball == null) return;
-        occupiedConveyorSlots++;
-        if (!conveyorColorCounts.ContainsKey(ball.ColorType)) conveyorColorCounts[ball.ColorType] = 0;
-        conveyorColorCounts[ball.ColorType]++;
-        UpdateConveyorText();
+        RefreshConveyorState();
     }
 
     public void OnUndockBall(BallController ball)
     {
-        if (ball == null) return;
-        occupiedConveyorSlots = Mathf.Max(0, occupiedConveyorSlots - 1);
-        if (conveyorColorCounts.TryGetValue(ball.ColorType, out int count))
-            conveyorColorCounts[ball.ColorType] = Mathf.Max(0, count - 1);
-        UpdateConveyorText();
+        RefreshConveyorState();
     }
 
-    public bool IsFullSlotConvayor() => occupiedConveyorSlots >= conveyorCapacity;
+    public bool IsFullSlotConvayor() => conveyorCapacity > 0 && occupiedConveyorSlots >= conveyorCapacity;
     public bool HasBallInConvayor() => occupiedConveyorSlots > 0;
     public int GetOccupiedSlotConvayorCount() => occupiedConveyorSlots;
     public Dictionary<ColorType, int> GetConveyorColorCounts() => new(conveyorColorCounts);
@@ -64,5 +100,42 @@ public class TopGameController : MonoBehaviour
     {
         if (conveyorSlotFillText != null)
             conveyorSlotFillText.text = $"{occupiedConveyorSlots}/{conveyorCapacity}";
+    }
+
+    private void SubscribeToConveyor()
+    {
+        DockSlotConveyor conveyor = funnelController != null ? funnelController.Conveyor : null;
+        if (conveyor == null)
+            conveyor = FindFirstObjectByType<DockSlotConveyor>();
+        if (subscribedConveyor == conveyor) return;
+
+        if (subscribedConveyor != null)
+            subscribedConveyor.BallCountChanged -= RefreshConveyorState;
+        subscribedConveyor = conveyor;
+        if (subscribedConveyor != null)
+            subscribedConveyor.BallCountChanged += RefreshConveyorState;
+    }
+
+    private void RefreshConveyorReference()
+    {
+        SubscribeToConveyor();
+        conveyorCapacity = subscribedConveyor != null ? subscribedConveyor.Count : 0;
+    }
+
+    private void RefreshConveyorState()
+    {
+        occupiedConveyorSlots = subscribedConveyor != null ? subscribedConveyor.BallCount : 0;
+        conveyorColorCounts.Clear();
+        if (subscribedConveyor != null)
+        {
+            foreach (DockSlot slot in subscribedConveyor.Slots)
+            {
+                BallController ball = slot != null ? slot.Ball : null;
+                if (ball == null) continue;
+                conveyorColorCounts.TryGetValue(ball.ColorType, out int count);
+                conveyorColorCounts[ball.ColorType] = count + 1;
+            }
+        }
+        UpdateConveyorText();
     }
 }

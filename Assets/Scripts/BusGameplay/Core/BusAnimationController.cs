@@ -22,7 +22,7 @@ public class BusAnimationController : MonoBehaviour
 
     public void PlayIdle() { PlayIfExists(IdleState); }
     public void PlayBlocked() { PlayIfExists(HitState); }
-    public void PlayStuck() { PlayIfExists(StuckState); }
+    public void PlayStuck() { PlayIfExists(StuckState, true); }
     public void PlayMove() { PlayIfExists(MoveState); }
     public void PlayMoveLeft() { PlayIfExists(HitLeftState); }
     public void PlayMoveRight() { PlayIfExists(HitRightState); }
@@ -70,15 +70,15 @@ public class BusAnimationController : MonoBehaviour
             HitDirection.Back => HitBackState,
             _ => HitState
         };
-        PlayIfExists(state);
+        PlayIfExists(state, true);
     }
 
-    private void PlayIfExists(string stateName)
+    private void PlayIfExists(string stateName, bool restart = false)
     {
         if (animator == null || string.IsNullOrEmpty(stateName)) return;
 
         int stateHash = Animator.StringToHash(stateName);
-        if (playingStateHash == stateHash) return;
+        if (!restart && playingStateHash == stateHash) return;
         if (!animator.HasState(0, stateHash))
         {
             Debug.LogWarning($"{name}: Animator state '{stateName}' was not found.");

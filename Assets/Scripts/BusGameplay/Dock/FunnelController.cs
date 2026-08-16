@@ -30,6 +30,12 @@ public class FunnelController : MonoBehaviour
     public Transform BallHolder => ballHolder;
     public Transform BusDropBallPoint => busDropBallPoint;
     public Transform FunnelBot => funnelBot;
+    public DockSlotConveyor Conveyor => dockSlotConveyor;
+
+    public void SetConveyorSpeedMultiplier(float multiplier)
+    {
+        dockSlotConveyor?.SetSpeedMultiplier(multiplier);
+    }
 
     private void Awake()
     {

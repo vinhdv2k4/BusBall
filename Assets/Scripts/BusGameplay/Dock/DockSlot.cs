@@ -17,6 +17,11 @@ public class DockSlot : MonoBehaviour
         ball = null;
     }
 
+    public void Clear()
+    {
+        ball = null;
+    }
+
     public bool CanAccept(BallController candidate)
     {
         return candidate != null && (ball == null || ball == candidate);

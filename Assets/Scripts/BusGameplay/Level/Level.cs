@@ -38,7 +38,15 @@ public class Level : MonoBehaviour
         for (int i = ObjectRoot.childCount - 1; i >= 0; i--)
         {
             Transform child = ObjectRoot.GetChild(i);
-            if (child != null) Destroy(child.gameObject);
+            if (child == null) continue;
+
+            Bus bus = child.GetComponent<Bus>();
+            if (bus != null && ObjectPool.IsSpawned(bus.gameObject))
+                bus.RecycleToPool();
+            else if (ObjectPool.IsSpawned(child.gameObject))
+                ObjectPool.Recycle(child.gameObject);
+            else
+                Destroy(child.gameObject);
         }
     }
 }

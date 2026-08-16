@@ -137,6 +137,7 @@ public class BallController : MonoBehaviour
         if (newSlot == null || getWorldPosition == null) return;
         KillAllMovementTweens();
         Slot = newSlot;
+        IsDockAnimationCompleted = false;
         SetColliders(true);
         EnableKinematicPhysics();
         movementRoutine = StartCoroutine(PathMoveRoutine(duration, getWorldPosition));
@@ -161,6 +162,8 @@ public class BallController : MonoBehaviour
 
     private IEnumerator PathMoveRoutine(float duration, Func<float, Vector3> getWorldPosition)
     {
+        DockSlot targetSlot = Slot;
+        transform.SetParent(null, true);
         float elapsed = 0f;
         duration = Mathf.Max(0.01f, duration);
         while (elapsed < duration)
@@ -170,12 +173,23 @@ public class BallController : MonoBehaviour
             yield return null;
         }
         transform.position = getWorldPosition(1f);
+        if (targetSlot != null)
+        {
+            transform.SetParent(targetSlot.transform, true);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+        }
         movementRoutine = null;
         CompleteConveyorCompactMove();
     }
 
     private void CompleteConveyorCompactMove() { IsCompacting = false; IsDockAnimationCompleted = true; }
-    private void KillCompactMoveTween() { if (movementRoutine != null) StopCoroutine(movementRoutine); movementRoutine = null; IsCompacting = false; }
+    private void KillCompactMoveTween()
+    {
+        if (movementRoutine != null) StopCoroutine(movementRoutine);
+        movementRoutine = null;
+        IsCompacting = false;
+    }
     public void KillAllMovementTweens() => KillCompactMoveTween();
 
     public void Undock()

@@ -19,5 +19,6 @@ MonoBehaviour:
   prfBox: {fileID: 1709254077376921, guid: 2e1f3d814f862a04cb0d6f0943bd2de4, type: 3}
   boxPrefab: {fileID: 8615602838960495587, guid: 2e1f3d814f862a04cb0d6f0943bd2de4, type: 3}
   prfBoxLane: {fileID: 1709254077376921, guid: a8e1c1ba54df02d4280b09750d903c40, type: 3}
+  boxLanePrefab: {fileID: 5491465048045561459, guid: a8e1c1ba54df02d4280b09750d903c40, type: 3}
   garage: {fileID: 1709254077376921, guid: 82e5c4d3b6fe8124e964bd63888676a1, type: 3}
   iceCube: {fileID: 0}

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
+using DG.Tweening;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -48,6 +49,7 @@ public class Bus : MonoBehaviour
     private Coroutine movementRoutine;
     private readonly List<Bus> blockingBuses = new();
     private readonly List<Bus> busesBlockedByThis = new();
+    private readonly RaycastHit[] movementCastHits = new RaycastHit[8];
     private int levelIndex = -1;
     private bool releasedBlockedBuses;
     private bool hasFinishedRoad;
@@ -55,8 +57,12 @@ public class Bus : MonoBehaviour
     private bool isDespawning;
     private int lastReachedKnotIndex = -1;
     private float activeKnotZRotation;
+    private Vector3 movementStartPosition;
+    private Tween collisionReturnTween;
+    private VfxPoolable hurrySmokeVfx;
     private const float ExitDistance = 10f;
     private const float ExitSpeed = 10f;
+    private const float RoadRotationDuration = 0.05f;
 
     public IReadOnlyList<BallController> Balls => balls;
     public int BallCount => balls.Count;
@@ -97,6 +103,7 @@ public class Bus : MonoBehaviour
     {
         if (splineAnimate != null)
             splineAnimate.Completed -= OnSplineCompleted;
+        StopHurrySmoke();
     }
 
     private void OnSplineCompleted()
@@ -116,6 +123,7 @@ public class Bus : MonoBehaviour
         yield return ScaleBallsForReleaseStaggered(0.2f, 0.02f);
 
         DropBall();
+        topGameController?.NotifyBusReleasedBalls();
         busAnimationController?.PlayMove();
         yield return ExitAndRecycle();
     }
@@ -176,25 +184,49 @@ public class Bus : MonoBehaviour
             yield return null;
         }
 
-        ObjectPool.Recycle(gameObject);
+        RecycleToPool();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider == null || collision.collider.transform.IsChildOf(transform)) return;
-        HitDirection direction = BusUtils.GetHitDirection(transform, collision.collider);
+        if (collision.collider == null) return;
+        Bus blockingBus = collision.collider.GetComponentInParent<Bus>();
+        if (blockingBus == null || blockingBus == this || !blockingBuses.Contains(blockingBus)) return;
+        HandleBusCollision(blockingBus, collision.collider);
+    }
+
+    private void HandleBusCollision(Bus blockingBus, Collider blockingCollider)
+    {
+        if (movementRoutine != null)
+        {
+            StopCoroutine(movementRoutine);
+            movementRoutine = null;
+        }
         ChangeState(BusState.GotHit);
-        busAnimationController?.PlayHit(direction);
-        VfxManager.Play(VfxType.BusHit, transform.position);
-        Hit?.Invoke(direction);
+        StopHurrySmoke();
+        blockingBus.PlayStuckFeedback();
+        VfxManager.Play(VfxType.BusHit, blockingBus.transform.position);
+        GameSoundManager.Instance?.PlayCarImpact();
         SetBlocked(true);
+
+        // The moving bus bounces back to where this attempt started.
+        busAnimationController?.PlayHit(HitDirection.Back);
+        collisionReturnTween?.Kill();
+        collisionReturnTween = transform.DOMove(movementStartPosition, RoadRotationDuration)
+            .SetEase(Ease.OutQuad);
+        Hit?.Invoke(HitDirection.Back);
     }
 
     public void StartMoveStraight()
     {
+        collisionReturnTween?.Kill();
+        movementStartPosition = transform.position;
         ChangeState(BusState.MoveStraight);
-        if (data != null && data.IsHurryBusMechanic())
+        StartHurrySmoke();
+        if (blockingBuses.Count > 0 || (data != null && data.IsHurryBusMechanic()))
+        {
             busAnimationController?.PlayHurry();
+        }
         if (movementRoutine != null) StopCoroutine(movementRoutine);
         movementRoutine = StartCoroutine(MoveToRoadPoint());
     }
@@ -211,18 +243,32 @@ public class Bus : MonoBehaviour
             splineAnimate.NormalizedTime >= 0.8f)
         {
             hasOpenedOnRoad = true;
+            if (iconTop != null) iconTop.enabled = false;
             busAnimationController?.PlayOpen(data.busType);
         }
 
-        if (!enableClickInput) return;
+        if (!TryGetPointerPress(out Vector2 screenPosition))
+            return;
 
-#if ENABLE_INPUT_SYSTEM
+        TrySelect(screenPosition);
+    }
+
+    private static bool TryGetPointerPress(out Vector2 screenPosition)
+    {
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-            TrySelect(Mouse.current.position.ReadValue());
-#else
-        if (Input.GetMouseButtonDown(0))
-            TrySelect(Input.mousePosition);
-#endif
+        {
+            screenPosition = Mouse.current.position.ReadValue();
+            return true;
+        }
+
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        {
+            screenPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+            return true;
+        }
+
+        screenPosition = default;
+        return false;
     }
 
     private void LateUpdate()
@@ -273,25 +319,18 @@ public class Bus : MonoBehaviour
 
     private void TrySelect(Vector2 screenPosition)
     {
-        if (!CanInteract() || Camera.main == null) return;
-        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+        Camera mainCamera = Camera.main;
+        if (mainCamera == null) return;
+
+        Ray ray = mainCamera.ScreenPointToRay(screenPosition);
         if (!Physics.Raycast(ray, out RaycastHit hit, 1000f)) return;
-        if (hit.collider.transform != transform && !hit.collider.transform.IsChildOf(transform)) return;
 
-        // Block relationship is calculated in the level JSON. The physics check
-        // is intentionally not used to decide the gameplay state.
-        if (analysisData != null && analysisData.IsBlocked())
-        {
-            SetBlocked(true);
-            busAnimationController?.PlayHit(HitDirection.Front);
-            float blockDistance = busManager != null ? busManager.EnterDistance : 0.5f;
-            Bus blockingBus = GetNearestBlockingBus(transform.forward, blockDistance);
-            blockingBus?.busAnimationController?.PlayStuck();
-            if (blockingBus != null)
-                VfxManager.Play(VfxType.StuckBus, blockingBus.transform.position);
-            return;
-        }
+        Bus selectedBus = hit.collider.GetComponentInParent<Bus>();
+        if (selectedBus != this) return;
 
+        if (!enableClickInput || !CanInteract()) return;
+
+        GameSoundManager.Instance?.PlayCarFill();
         SetBlocked(false);
         StartMoveStraight();
     }
@@ -335,47 +374,63 @@ public class Bus : MonoBehaviour
     private System.Collections.IEnumerator MoveToRoadPoint()
     {
         Vector3 parkingPosition = transform.position;
-        Vector3 moveDirection = transform.right;
-        moveDirection.z = 0f;
-        moveDirection.Normalize();
+        Quaternion parkingRotation = transform.rotation;
         float enterDistance = busManager != null ? busManager.EnterDistance : 0.05f;
         float speed = busManager != null ? busManager.MoveSpeed : 0f;
 
         if (speed <= 0f)
         {
             Debug.LogWarning($"Bus {name}: BusManager or MoveSpeed is not configured.");
-            yield break;
-        }
-
-        float distanceToRoad = Mathf.Max(0f,
-            Vector3.Dot(pathData.nearestPoint - parkingPosition, moveDirection));
-        float movedDistance = 0f;
-
-        while (movedDistance < distanceToRoad - enterDistance)
-        {
-            float step = Mathf.Min(speed * Time.deltaTime, distanceToRoad - movedDistance);
-            transform.position += moveDirection * step;
-            movedDistance += step;
-            if (!releasedBlockedBuses &&
-                (transform.position - parkingPosition).sqrMagnitude >= enterDistance * enterDistance)
-                ReleaseBlockedBuses();
-            yield return null;
-        }
-
-        // A very short path can reach the road before crossing EnterDistance.
-        ReleaseBlockedBuses();
-
-        ChangeState(BusState.EnterRoad);
-        ChangeState(BusState.FollowRoad);
-        if (splineAnimate == null)
-        {
-            Debug.LogWarning($"Bus {name}: SplineAnimate is not assigned.");
+            StopHurrySmoke();
             yield break;
         }
 
         if (roadPath == null || !roadPath.TryGetRoad(pathData.splineContainerIndex, out SplineContainer road))
         {
             Debug.LogWarning($"Bus {name}: Road index {pathData.splineContainerIndex} is not configured.");
+            StopHurrySmoke();
+            yield break;
+        }
+
+        // nearestPoint is authored in the selected spline's local space.
+        Vector3 targetPosition = road.transform.TransformPoint(pathData.nearestPoint);
+        while ((transform.position - targetPosition).sqrMagnitude > 0.0001f)
+        {
+            Vector3 nextPosition = Vector3.MoveTowards(
+                transform.position, targetPosition, speed * Time.deltaTime);
+            if (MoveOrHandleBusCollision(nextPosition)) yield break;
+            transform.rotation = parkingRotation;
+            if (!releasedBlockedBuses &&
+                (transform.position - parkingPosition).sqrMagnitude >= enterDistance * enterDistance)
+                ReleaseBlockedBuses();
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+        ReleaseBlockedBuses();
+
+        if (!roadPath.TryEvaluate(pathData.splineContainerIndex, pathData.nearestT,
+                out Vector3 splineEntryPosition, out _))
+        {
+            StopHurrySmoke();
+            yield break;
+        }
+
+        yield return RotateToZ(0f);
+        while ((transform.position - splineEntryPosition).sqrMagnitude > 0.0001f)
+        {
+            Vector3 nextPosition = Vector3.MoveTowards(
+                transform.position, splineEntryPosition, speed * Time.deltaTime);
+            if (MoveOrHandleBusCollision(nextPosition)) yield break;
+            yield return null;
+        }
+
+        transform.position = splineEntryPosition;
+
+        ChangeState(BusState.EnterRoad);
+        if (splineAnimate == null)
+        {
+            Debug.LogWarning($"Bus {name}: SplineAnimate is not assigned.");
             yield break;
         }
 
@@ -386,8 +441,56 @@ public class Bus : MonoBehaviour
         hasOpenedOnRoad = false;
         lastReachedKnotIndex = GetReachedKnotIndex(road.Spline, pathData.nearestT);
         activeKnotZRotation = transform.eulerAngles.z;
-        ApplyKnotRotation(road.Spline, lastReachedKnotIndex);
+        float splineEntryZRotation = GetKnotZRotation(road.Spline, lastReachedKnotIndex);
+        PlayTurnAnimation(activeKnotZRotation, splineEntryZRotation);
+        yield return RotateToZ(splineEntryZRotation);
+        activeKnotZRotation = splineEntryZRotation;
+        ChangeState(BusState.FollowRoad);
         splineAnimate.Play();
+    }
+
+    private System.Collections.IEnumerator RotateToZ(float zRotation)
+    {
+        transform.DOKill();
+        Tween rotateTween = transform.DORotate(new Vector3(0f, 0f, zRotation), RoadRotationDuration)
+            .SetEase(Ease.OutQuad);
+        yield return rotateTween.WaitForCompletion();
+    }
+
+    private bool MoveOrHandleBusCollision(Vector3 nextPosition)
+    {
+        Vector3 movement = nextPosition - transform.position;
+        float movementDistance = movement.magnitude;
+        if (movementDistance <= 0.0001f) return false;
+
+        if (busCollider != null)
+        {
+            Bounds bounds = busCollider.bounds;
+            int hitCount = Physics.BoxCastNonAlloc(
+                bounds.center,
+                bounds.extents * 0.98f,
+                movement / movementDistance,
+                movementCastHits,
+                Quaternion.identity,
+                movementDistance,
+                blockMask,
+                QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < hitCount; i++)
+            {
+                Collider hitCollider = movementCastHits[i].collider;
+                Bus blockingBus = hitCollider != null ? hitCollider.GetComponentInParent<Bus>() : null;
+                if (blockingBus == null || blockingBus == this || !blockingBuses.Contains(blockingBus))
+                    continue;
+
+                float safeDistance = Mathf.Max(0f, movementCastHits[i].distance - 0.001f);
+                transform.position += movement.normalized * safeDistance;
+                HandleBusCollision(blockingBus, hitCollider);
+                return true;
+            }
+        }
+
+        transform.position = nextPosition;
+        return false;
     }
 
     private static int GetReachedKnotIndex(Spline spline, float normalizedTime)
@@ -398,19 +501,18 @@ public class Bus : MonoBehaviour
         return Mathf.Min(Mathf.FloorToInt(scaledT), spline.Count - 1);
     }
 
-    private void ApplyKnotRotation(Spline spline, int knotIndex)
+    private float GetKnotZRotation(Spline spline, int knotIndex)
     {
-        if (knotIndex < 0 || knotIndex >= spline.Count || splineAnimate.Container == null) return;
+        if (knotIndex < 0 || knotIndex >= spline.Count || splineAnimate.Container == null)
+            return transform.eulerAngles.z;
 
-        float knotZRotation = (splineAnimate.Container.transform.rotation *
+        return (splineAnimate.Container.transform.rotation *
             ToUnityQuaternion(spline[knotIndex].Rotation)).eulerAngles.z;
-        PlayTurnAnimation(activeKnotZRotation, knotZRotation);
-        activeKnotZRotation = knotZRotation;
-        transform.rotation = Quaternion.Euler(0f, 0f, activeKnotZRotation);
     }
 
     public void Configure(BusData data, Vector3 position, float zRotation)
     {
+        ResetForPoolSpawn();
         this.data = data?.Clone() ?? new BusData();
         transform.SetPositionAndRotation(position, Quaternion.Euler(0f, 0f, zRotation));
         ApplyColor();
@@ -428,6 +530,44 @@ public class Bus : MonoBehaviour
     {
         ballPrefab = prefab;
         SpawnStaticBall();
+    }
+
+    public void RecycleToPool()
+    {
+        ResetForPoolSpawn();
+        ObjectPool.Recycle(gameObject);
+    }
+
+    private void ResetForPoolSpawn()
+    {
+        StopAllCoroutines();
+        movementRoutine = null;
+        collisionReturnTween?.Kill();
+        collisionReturnTween = null;
+        splineAnimate?.Pause();
+        StopHurrySmoke();
+        RecycleStoredBalls();
+        blockingBuses.Clear();
+        busesBlockedByThis.Clear();
+        isBlocked = false;
+        releasedBlockedBuses = false;
+        hasFinishedRoad = false;
+        hasOpenedOnRoad = false;
+        isDespawning = false;
+        State = BusState.Idle;
+        if (iconTop != null) iconTop.enabled = true;
+        busAnimationController?.PlayIdle();
+    }
+
+    private void RecycleStoredBalls()
+    {
+        foreach (BallController ball in balls)
+        {
+            if (ball == null || !ObjectPool.IsSpawned(ball.gameObject)) continue;
+            ball.Release();
+            ObjectPool.Recycle(ball.gameObject);
+        }
+        balls.Clear();
     }
 
     public void SpawnStaticBall()
@@ -507,6 +647,25 @@ public class Bus : MonoBehaviour
             blockingBuses.Add(bus);
     }
 
+    private void PlayStuckFeedback()
+    {
+        busAnimationController?.PlayStuck();
+        GameSoundManager.Instance?.PlayCarStuck();
+    }
+
+    private void StartHurrySmoke()
+    {
+        if (hurrySmokeVfx == null)
+            hurrySmokeVfx = VfxManager.PlayAttached(VfxType.SmokeHurryBus, tfHurrySmoke);
+    }
+
+    private void StopHurrySmoke()
+    {
+        if (hurrySmokeVfx == null) return;
+        hurrySmokeVfx.Release();
+        hurrySmokeVfx = null;
+    }
+
     public void AddBlockedBus(Bus bus)
     {
         if (bus != null && bus != this && !busesBlockedByThis.Contains(bus))
@@ -541,64 +700,39 @@ public class Bus : MonoBehaviour
 
     private void ApplyColor()
     {
-        if (data == null)
-        {
-            Debug.Log($"Bus {name}: data is null in ApplyColor");
-            return;
-        }
+        if (data == null) return;
         ColorType colorType = data.colorType;
-        Debug.Log($"Bus {name}: ApplyColor called with colorType={colorType}");
 
         string matName = GetMaterialNameSuffix(colorType);
         if (!string.IsNullOrEmpty(matName))
         {
-            // Apply bus body material
-            if (bodyRenderer != null)
+            string path = $"Materials/Color/M_Color_{matName}";
+            Material mat = Resources.Load<Material>(path);
+            if (mat != null)
             {
-                string path = $"Materials/Color/M_Color_{matName}";
-                Material mat = Resources.Load<Material>(path);
-                if (mat != null)
-                {
-                    bodyRenderer.sharedMaterial = mat;
-                    Debug.Log($"Bus {name}: Loaded and applied body material {path}");
-                }
-                else
-                {
-                    Debug.LogWarning($"Bus {name}: Failed to load body material {path}!");
-                }
+                if (bodyRenderer != null) bodyRenderer.sharedMaterial = mat;
+                if (topRenderer != null) topRenderer.sharedMaterial = mat;
             }
 
-            // Apply glass material
             if (glassRenderer != null)
             {
-                string path = $"Materials/Glass/M_Glass_{matName}";
-                Material mat = Resources.Load<Material>(path);
-                if (mat != null)
+                string glassPath = $"Materials/Glass/M_Glass_{matName}";
+                Material glassMaterial = Resources.Load<Material>(glassPath);
+                if (glassMaterial != null)
                 {
                     Material[] materials = glassRenderer.sharedMaterials;
                     if (materials == null || materials.Length == 0)
-                        glassRenderer.sharedMaterial = mat;
+                        glassRenderer.sharedMaterial = glassMaterial;
                     else
                     {
                         for (int i = 0; i < materials.Length; i++)
-                            materials[i] = mat;
+                            materials[i] = glassMaterial;
                         glassRenderer.sharedMaterials = materials;
                     }
-                    Debug.Log($"Bus {name}: Loaded and applied glass material {path}");
-                }
-                else
-                {
-                    Debug.LogWarning($"Bus {name}: Failed to load glass material {path}!");
                 }
             }
         }
-        else
-        {
-            Debug.Log($"Bus {name}: matName suffix is null/empty for colorType={colorType}");
-        }
 
-        // Apply balls materials
-        Debug.Log($"Bus {name}: Initializing {balls.Count} balls with colorType={colorType}");
         foreach (BallController ball in balls)
         {
             if (ball != null)
@@ -678,6 +812,8 @@ public class Bus : MonoBehaviour
     {
         List<BallController> dropped = new(balls);
         balls.Clear();
+        if (dropped.Count > 0)
+            GameSoundManager.Instance?.PlayFillSequence();
         for (int i = 0; i < dropped.Count; i++)
             ReleaseBall(dropped[i], parent, i, dropped.Count);
         return dropped;

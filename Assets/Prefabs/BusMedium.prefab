@@ -211,8 +211,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0.009344459, z: -0.165}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.53, y: 0.53, z: 0.53}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4808113985169905}
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
@@ -265,7 +265,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 3a295090c4d009740b4e0e6f1aa87d66, type: 2}
+  m_Sprite: {fileID: 21300000, guid: d86907796d8c4f34fa727e5e3bfb3808, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,7 +273,7 @@ SpriteRenderer:
   m_Size: {x: 0.76, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!1 &1161607090078389
 GameObject:
@@ -1022,10 +1022,10 @@ MonoBehaviour:
   splineAnimate: {fileID: 4470517427659320879}
   roadPath: {fileID: 0}
   busAnimationController: {fileID: 8506751905480401555}
-  tfReleaseBall: {fileID: 4689364072382846, guid: e0fa67cd18633e244ab5c81ca723fddd, type: 3}
-  tfLanding: {fileID: 4215879266689626, guid: e0fa67cd18633e244ab5c81ca723fddd, type: 3}
-  tfSmoke: {fileID: 4043919389829319, guid: e0fa67cd18633e244ab5c81ca723fddd, type: 3}
-  tfHurrySmoke: {fileID: 4743393880019028, guid: e0fa67cd18633e244ab5c81ca723fddd, type: 3}
+  tfReleaseBall: {fileID: 4581786255902400}
+  tfLanding: {fileID: 4571718729274231}
+  tfSmoke: {fileID: 4477046003934300}
+  tfHurrySmoke: {fileID: 4045458335737618}
   ballTransforms:
   - {fileID: 4107629493147155}
   - {fileID: 4833703512093738}
