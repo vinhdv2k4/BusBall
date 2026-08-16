@@ -6,51 +6,40 @@ using UnityEngine;
 public class BoxLaneDetector : MonoBehaviour
 {
     [SerializeField] private float processCooldown = 0.02f;
-    [SerializeField, Range(0f, 1f)] private float requiredSplineProgress = 0.85f;
+    [Header("Collider to Detect")]
+    [SerializeField] private Collider2D detectedCollider;
     private readonly Queue<Collider2D> pending = new();
     private readonly HashSet<Collider2D> enqueued = new();
-    private readonly List<Collider2D> overlapResults = new();
     private Collider2D detectorCollider;
     private BoxLane lane;
     private Coroutine routine;
     public void Initialize(BoxLane owner) => lane = owner;
+
+    public bool IsDetecting(BallController ball)
+    {
+        return detectorCollider != null && ball != null && ball.CirCollider != null &&
+            detectorCollider.IsTouching(ball.CirCollider);
+    }
     private void Awake()
     {
-        detectorCollider = GetComponent<Collider2D>();
+        detectorCollider = detectedCollider;
+        if (detectorCollider == null)
+        {
+            Debug.LogError(
+                $"BoxLaneDetector {name}: Detected Collider chưa được gán.",
+                this);
+            enabled = false;
+            return;
+        }
+
         detectorCollider.isTrigger = true;
         lane ??= GetComponentInParent<BoxLane>();
         Debug.Log($"BoxLaneDetector {name}: ready. Lane={(lane != null ? lane.name : "null")}, Collider={detectorCollider != null}.", this);
     }
 
-    private void FixedUpdate()
-    {
-        if (detectorCollider == null) return;
-
-        overlapResults.Clear();
-        ContactFilter2D filter = ContactFilter2D.noFilter;
-        filter.useTriggers = true;
-        detectorCollider.Overlap(filter, overlapResults);
-        foreach (Collider2D other in overlapResults)
-            Enqueue(other);
-    }
-
-    public bool HasReachedSplineProgress(BallController ball)
-    {
-        DockSlotConveyor conveyor = lane != null
-            ? FindFirstObjectByType<DockSlotConveyor>()
-            : null;
-        bool reached = conveyor != null && conveyor.HasReachedProgress(ball, requiredSplineProgress);
-        Debug.Log($"BoxLaneDetector {name}: spline progress reached={reached}.", this);
-        return reached;
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        Enqueue(other);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"BoxLaneDetector {name}: OnTriggerEnter2D detected {other.name}.", this);
         Enqueue(other);
     }
 

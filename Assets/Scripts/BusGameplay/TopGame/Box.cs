@@ -82,29 +82,60 @@ public class Box : MonoBehaviour
 
     public bool TryReceiveBall(BallController ball)
     {
-        if (ball == null || ball.ColorType != colorType || IsFull) return false;
+        if (!CanReceiveBall(ball)) return false;
         foreach (DockSlot slot in slots)
         {
             if (slot == null || slot.HasBall) continue;
             if (!slot.TryDockBall(ball)) continue;
-            IsFull = true;
-            foreach (DockSlot candidate in slots) if (candidate != null && !candidate.HasBall) IsFull = false;
+            RefreshFullState();
             return true;
         }
         return false;
+    }
+
+    public bool CanReceiveBall(BallController ball)
+    {
+        if (ball == null || ball.ColorType != colorType || IsFull) return false;
+        foreach (DockSlot slot in slots)
+            if (slot != null && !slot.HasBall) return true;
+        return false;
+    }
+
+    public bool RefreshFullState()
+    {
+        IsFull = true;
+        foreach (DockSlot slot in slots)
+        {
+            if (slot != null && !slot.HasBall)
+            {
+                IsFull = false;
+                break;
+            }
+        }
+        return IsFull;
     }
 
     public void PlayDieVfx()
     {
         if (tfBoxDieVfx != null) tfBoxDieVfx.gameObject.SetActive(true);
         VfxManager.Play(VfxType.BoxDie, transform.position);
-        boxAnimationController?.PlayComplete();
+        boxAnimationController?.PlayDie();
     }
+
+    public void PlayAsFirstBox() => boxAnimationController?.PlayOpen();
 
     public void ResetData()
     {
         IsFull = false;
-        foreach (DockSlot slot in slots) slot?.ReleaseBall();
+        foreach (DockSlot slot in slots)
+        {
+            BallController ball = slot?.RemoveBallForConsumption();
+            if (ball != null)
+            {
+                ball.KillAllMovementTweens();
+                ObjectPool.Recycle(ball.gameObject);
+            }
+        }
         if (tfBoxDieVfx != null) tfBoxDieVfx.gameObject.SetActive(false);
         boxAnimationController?.ResetToIdle();
         ClearMechanicInstances();

@@ -5,6 +5,11 @@ public class BoxLaneHolder : MonoBehaviour
 {
     [HideInInspector] private readonly List<BoxLane> boxLanes = new();
     [SerializeField] private PrefabSO prefabSO;
+    [Header("Box Lane Spawn Points")]
+    [SerializeField] private Transform gate0SpawnPoint;
+    [SerializeField] private Transform gate1SpawnPoint;
+    [SerializeField] private Transform gate2SpawnPoint;
+    [SerializeField] private Transform gate3SpawnPoint;
     public List<BoxLane> LstBoxLanes => boxLanes;
 
     public void Init(TopGameConfigData topLevelConfig, PrefabSO prefabDatabase = null)
@@ -12,15 +17,32 @@ public class BoxLaneHolder : MonoBehaviour
         if (prefabDatabase != null) prefabSO = prefabDatabase;
         ResetData();
         if (topLevelConfig?.boxLaneConfigs == null) return;
-        foreach (BoxLaneConfigData config in topLevelConfig.boxLaneConfigs)
+        for (int i = 0; i < topLevelConfig.boxLaneConfigs.Count; i++)
         {
+            BoxLaneConfigData config = topLevelConfig.boxLaneConfigs[i];
             BoxLane lane = prefabSO?.GetBoxLanePrefab() != null
                 ? Instantiate(prefabSO.GetBoxLanePrefab(), transform)
                 : new GameObject("BoxLane").AddComponent<BoxLane>();
+            lane.name = $"BoxLane_Gate_{i}";
             lane.transform.SetParent(transform, false);
+            Transform spawnPoint = GetSpawnPoint(i);
+            if (spawnPoint != null)
+                lane.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
             lane.Init(config, prefabSO != null ? prefabSO.GetBoxPrefab()?.gameObject : null);
             boxLanes.Add(lane);
         }
+    }
+
+    private Transform GetSpawnPoint(int gateIndex)
+    {
+        return gateIndex switch
+        {
+            0 => gate0SpawnPoint,
+            1 => gate1SpawnPoint,
+            2 => gate2SpawnPoint,
+            3 => gate3SpawnPoint,
+            _ => null
+        };
     }
 
     public void ResetData()

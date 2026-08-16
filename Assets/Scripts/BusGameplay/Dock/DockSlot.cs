@@ -40,6 +40,13 @@ public class DockSlot : MonoBehaviour
         return released;
     }
 
+    public BallController RemoveBallForConsumption()
+    {
+        BallController consumed = ball;
+        ball = null;
+        return consumed;
+    }
+
     public void SetBall(BallController value)
     {
         ball = value;

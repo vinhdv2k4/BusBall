@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class BallController : MonoBehaviour
 {
@@ -96,8 +97,10 @@ public class BallController : MonoBehaviour
         Slot = slot;
         transform.SetParent(slot.transform, true);
         IsDockAnimationCompleted = false;
-        SetColliders(turnOnCollider);
-        DisablePhysics();
+        // A docked ball must stay in the 2D physics simulation so conveyor
+        // detectors can receive trigger callbacks while it follows its slot.
+        SetColliders(true);
+        EnableKinematicPhysics();
         movementRoutine = StartCoroutine(MoveRoutine(slot.transform.position, 0.12f, false, () =>
         {
             // Reset the ball to the slot's local origin so it stays centered
@@ -118,7 +121,7 @@ public class BallController : MonoBehaviour
         if (newSlot == null) return;
         KillAllMovementTweens();
         Slot = newSlot;
-        DisablePhysics();
+        EnableKinematicPhysics();
         movementRoutine = StartCoroutine(MoveRoutine(newSlot.transform.position, duration, true, CompleteConveyorCompactMove));
     }
 
@@ -134,7 +137,8 @@ public class BallController : MonoBehaviour
         if (newSlot == null || getWorldPosition == null) return;
         KillAllMovementTweens();
         Slot = newSlot;
-        DisablePhysics();
+        SetColliders(true);
+        EnableKinematicPhysics();
         movementRoutine = StartCoroutine(PathMoveRoutine(duration, getWorldPosition));
     }
 
@@ -217,6 +221,32 @@ public class BallController : MonoBehaviour
     {
         if (body == null) return;
         body.bodyType = RigidbodyType2D.Dynamic;
+        body.simulated = true;
+    }
+
+    public void MoveToBoxArc(DockSlot targetSlot, float duration, float arcHeight, Action onComplete = null)
+    {
+        if (targetSlot == null) return;
+        KillAllMovementTweens();
+        SetColliders(false);
+        EnableKinematicPhysics();
+        Vector3 target = targetSlot.transform.position;
+        transform.DOKill();
+        transform.DOJump(target, Mathf.Max(0f, arcHeight), 1, Mathf.Max(0.01f, duration))
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() =>
+            {
+                targetSlot.SetBall(this);
+                onComplete?.Invoke();
+            });
+    }
+
+    private void EnableKinematicPhysics()
+    {
+        if (body == null) return;
+        body.bodyType = RigidbodyType2D.Kinematic;
+        body.linearVelocity = Vector2.zero;
+        body.angularVelocity = 0f;
         body.simulated = true;
     }
 

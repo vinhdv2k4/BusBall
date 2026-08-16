@@ -107,17 +107,15 @@ public class DockSlotConveyor : MonoBehaviour
     public void OnBallReleasedFromConveyor(int slotIndex)
     {
         if (dockSlots.Count == 0) return;
-        AdvanceLeaderFrom(slotIndex);
-        TryCompactFollowers();
+        // The released ball leaves the conveyor without pulling the remaining
+        // balls backwards. The next logical slot becomes the new leader.
+        _leaderSlotIndex = GetNextSlotIndex(slotIndex, 1, dockSlots.Count);
     }
 
     private void AdvanceLeaderFrom(int releasedIndex)
     {
-        // The leader is the first logical position in the conveyor queue.
-        // When a follower is released, the leader itself does not change;
-        // compacting fills the released position from behind.
-        if (_leaderSlotIndex < 0 || _leaderSlotIndex >= dockSlots.Count)
-            _leaderSlotIndex = 0;
+        if (dockSlots.Count == 0) return;
+        _leaderSlotIndex = GetNextSlotIndex(releasedIndex, 1, dockSlots.Count);
     }
 
     private void TryCompactFollowers()
