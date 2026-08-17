@@ -1,5 +1,6 @@
 {
     "levelId":  12,
+    "objectScale":  0.79999995,
     "busEnrichedDatas":  [
                              {
                                  "Type":  0,
@@ -35,8 +36,8 @@
                                                      "nearestT":  0.50624996,
                                                      "splineContainerIndex":  1,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  0.69999933,
+                                                                          "x":  -2.6077032E-08
                                                                       }
                                                  }
                              },
@@ -113,8 +114,8 @@
                                                      "nearestT":  0.11874999,
                                                      "splineContainerIndex":  0,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  -3,
+                                                                          "x":  4.5448542E-07
                                                                       }
                                                  }
                              },

@@ -14,6 +14,17 @@ public class Box : MonoBehaviour
     public ColorType ColorType => colorType;
     public IReadOnlyList<DockSlot> Slots => slots;
     public bool IsFull { get; private set; }
+    public int EmptySlotCount
+    {
+        get
+        {
+            int count = 0;
+            foreach (DockSlot slot in slots)
+                if (slot != null && !slot.HasBall)
+                    count++;
+            return count;
+        }
+    }
 
     private void Awake()
     {

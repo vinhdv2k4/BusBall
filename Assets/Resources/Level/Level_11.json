@@ -1,5 +1,6 @@
 {
     "levelId":  11,
+    "objectScale":  0.79999995,
     "busEnrichedDatas":  [
                              {
                                  "Type":  0,
@@ -472,9 +473,9 @@
                              {
                                  "Type":  0,
                                  "Position":  {
-                                                  "y":  0,
+                                                  "y":  -5.7200017,
                                                   "z":  0,
-                                                  "x":  0
+                                                  "x":  -4.6730054E-07
                                               },
                                  "Rotation":  270,
                                  "BusData":  {
@@ -497,8 +498,8 @@
                                                   },
                                  "BusPathData":  {
                                                      "startPosition":  {
-                                                                           "y":  0,
-                                                                           "x":  0
+                                                                           "y":  -5.7200017,
+                                                                           "x":  -4.6730054E-07
                                                                        },
                                                      "nearestT":  0.08125,
                                                      "splineContainerIndex":  1,

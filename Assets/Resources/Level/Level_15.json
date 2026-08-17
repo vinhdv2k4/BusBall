@@ -1,5 +1,6 @@
 {
     "levelId":  15,
+    "objectScale":  0.79999995,
     "busEnrichedDatas":  [
                              {
                                  "Type":  0,
@@ -896,8 +897,8 @@
                                                      "nearestT":  0.11874999,
                                                      "splineContainerIndex":  0,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  -3,
+                                                                          "x":  4.61936E-07
                                                                       }
                                                  }
                              },
@@ -1022,8 +1023,8 @@
                                                      "nearestT":  0.11874999,
                                                      "splineContainerIndex":  0,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  -3,
+                                                                          "x":  3.2037497E-07
                                                                       }
                                                  }
                              },
@@ -1145,8 +1146,8 @@
                                                      "nearestT":  0.11874999,
                                                      "splineContainerIndex":  0,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  -3,
+                                                                          "x":  1.7881393E-07
                                                                       }
                                                  }
                              },

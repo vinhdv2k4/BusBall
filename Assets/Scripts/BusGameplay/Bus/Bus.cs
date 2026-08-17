@@ -59,10 +59,12 @@ public class Bus : MonoBehaviour
     private float activeKnotZRotation;
     private Vector3 movementStartPosition;
     private Tween collisionReturnTween;
+    private Tween roadEntryRotationTween;
     private VfxPoolable hurrySmokeVfx;
     private const float ExitDistance = 10f;
     private const float ExitSpeed = 10f;
     private const float RoadRotationDuration = 0.05f;
+    private const float RoadEntryRotationDuration = 0.1f;
 
     public IReadOnlyList<BallController> Balls => balls;
     public int BallCount => balls.Count;
@@ -90,6 +92,7 @@ public class Bus : MonoBehaviour
             topGameController = FindFirstObjectByType<TopGameController>();
 
         busCollider = GetComponent<Collider>();
+        SetHurryBusLights(false);
         if (splineAnimate != null)
             splineAnimate.Completed += OnSplineCompleted;
         foreach (Transform slot in ballTransforms)
@@ -197,6 +200,8 @@ public class Bus : MonoBehaviour
 
     private void HandleBusCollision(Bus blockingBus, Collider blockingCollider)
     {
+        roadEntryRotationTween?.Kill();
+        roadEntryRotationTween = null;
         if (movementRoutine != null)
         {
             StopCoroutine(movementRoutine);
@@ -207,6 +212,7 @@ public class Bus : MonoBehaviour
         blockingBus.PlayStuckFeedback();
         VfxManager.Play(VfxType.BusHit, blockingBus.transform.position);
         GameSoundManager.Instance?.PlayCarImpact();
+        RestoreBlockedBusesIfReturned();
         SetBlocked(true);
 
         // The moving bus bounces back to where this attempt started.
@@ -220,6 +226,8 @@ public class Bus : MonoBehaviour
     public void StartMoveStraight()
     {
         collisionReturnTween?.Kill();
+        roadEntryRotationTween?.Kill();
+        roadEntryRotationTween = null;
         movementStartPosition = transform.position;
         ChangeState(BusState.MoveStraight);
         StartHurrySmoke();
@@ -416,24 +424,16 @@ public class Bus : MonoBehaviour
             yield break;
         }
 
-        yield return RotateToZ(0f);
-        while ((transform.position - splineEntryPosition).sqrMagnitude > 0.0001f)
-        {
-            Vector3 nextPosition = Vector3.MoveTowards(
-                transform.position, splineEntryPosition, speed * Time.deltaTime);
-            if (MoveOrHandleBusCollision(nextPosition)) yield break;
-            yield return null;
-        }
-
-        transform.position = splineEntryPosition;
-
-        ChangeState(BusState.EnterRoad);
         if (splineAnimate == null)
         {
             Debug.LogWarning($"Bus {name}: SplineAnimate is not assigned.");
+            StopHurrySmoke();
             yield break;
         }
 
+        // At the near point, begin turning toward the knot that contains nearestT.
+        // The turn intentionally runs while the bus keeps moving straight to the spline.
+        ChangeState(BusState.EnterRoad);
         splineAnimate.Container = road;
         splineAnimate.Alignment = SplineAnimate.AlignmentMode.None;
         splineAnimate.NormalizedTime = pathData.nearestT;
@@ -443,18 +443,23 @@ public class Bus : MonoBehaviour
         activeKnotZRotation = transform.eulerAngles.z;
         float splineEntryZRotation = GetKnotZRotation(road.Spline, lastReachedKnotIndex);
         PlayTurnAnimation(activeKnotZRotation, splineEntryZRotation);
-        yield return RotateToZ(splineEntryZRotation);
+        roadEntryRotationTween = transform.DORotate(new Vector3(0f, 0f, splineEntryZRotation),
+                RoadEntryRotationDuration)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() => roadEntryRotationTween = null);
+
+        while ((transform.position - splineEntryPosition).sqrMagnitude > 0.0001f)
+        {
+            Vector3 nextPosition = Vector3.MoveTowards(
+                transform.position, splineEntryPosition, speed * Time.deltaTime);
+            if (MoveOrHandleBusCollision(nextPosition)) yield break;
+            yield return null;
+        }
+
+        transform.position = splineEntryPosition;
         activeKnotZRotation = splineEntryZRotation;
         ChangeState(BusState.FollowRoad);
         splineAnimate.Play();
-    }
-
-    private System.Collections.IEnumerator RotateToZ(float zRotation)
-    {
-        transform.DOKill();
-        Tween rotateTween = transform.DORotate(new Vector3(0f, 0f, zRotation), RoadRotationDuration)
-            .SetEase(Ease.OutQuad);
-        yield return rotateTween.WaitForCompletion();
     }
 
     private bool MoveOrHandleBusCollision(Vector3 nextPosition)
@@ -544,8 +549,11 @@ public class Bus : MonoBehaviour
         movementRoutine = null;
         collisionReturnTween?.Kill();
         collisionReturnTween = null;
+        roadEntryRotationTween?.Kill();
+        roadEntryRotationTween = null;
         splineAnimate?.Pause();
         StopHurrySmoke();
+        SetHurryBusLights(false);
         RecycleStoredBalls();
         blockingBuses.Clear();
         busesBlockedByThis.Clear();
@@ -666,6 +674,15 @@ public class Bus : MonoBehaviour
         hurrySmokeVfx = null;
     }
 
+    private void SetHurryBusLights(bool active)
+    {
+        foreach (GameObject light in hurryBusLight)
+        {
+            if (light != null && light.activeSelf != active)
+                light.SetActive(active);
+        }
+    }
+
     public void AddBlockedBus(Bus bus)
     {
         if (bus != null && bus != this && !busesBlockedByThis.Contains(bus))
@@ -679,6 +696,23 @@ public class Bus : MonoBehaviour
 
         foreach (Bus blockedBus in busesBlockedByThis)
             blockedBus?.RemoveBlockingBus(this);
+    }
+
+    private void RestoreBlockedBusesIfReturned()
+    {
+        if (!releasedBlockedBuses) return;
+        releasedBlockedBuses = false;
+
+        foreach (Bus blockedBus in busesBlockedByThis)
+            blockedBus?.RestoreBlockingBus(this);
+    }
+
+    private void RestoreBlockingBus(Bus blockingBus)
+    {
+        if (blockingBus == null || blockingBus == this || blockingBuses.Contains(blockingBus)) return;
+
+        blockingBuses.Add(blockingBus);
+        analysisData.blockedBusCount++;
     }
 
     private void RemoveBlockingBus(Bus blockingBus)
@@ -780,6 +814,9 @@ public class Bus : MonoBehaviour
     {
         if (State == nextState) return;
         State = nextState;
+        SetHurryBusLights(nextState == BusState.MoveStraight ||
+                          nextState == BusState.EnterRoad ||
+                          nextState == BusState.FollowRoad);
         switch (nextState)
         {
             case BusState.Idle: busAnimationController?.PlayIdle(); break;

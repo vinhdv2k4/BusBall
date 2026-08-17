@@ -1,5 +1,6 @@
 {
     "levelId":  24,
+    "objectScale":  0.74,
     "busEnrichedDatas":  [
                              {
                                  "Type":  0,
@@ -77,8 +78,8 @@
                                                      "nearestT":  0.50624996,
                                                      "splineContainerIndex":  1,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  0.69999933,
+                                                                          "x":  -2.6077032E-08
                                                                       }
                                                  }
                              },
@@ -1496,8 +1497,8 @@
                                                      "nearestT":  0.50624996,
                                                      "splineContainerIndex":  1,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  0.69999933,
+                                                                          "x":  -2.6077032E-08
                                                                       }
                                                  }
                              },
@@ -1535,8 +1536,8 @@
                                                      "nearestT":  0.50624996,
                                                      "splineContainerIndex":  1,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  0.69999933,
+                                                                          "x":  -2.6077032E-08
                                                                       }
                                                  }
                              },
@@ -1574,8 +1575,8 @@
                                                      "nearestT":  0.50624996,
                                                      "splineContainerIndex":  1,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  0.69999933,
+                                                                          "x":  -2.6077032E-08
                                                                       }
                                                  }
                              },
@@ -1613,8 +1614,8 @@
                                                      "nearestT":  0.50624996,
                                                      "splineContainerIndex":  1,
                                                      "nearestPoint":  {
-                                                                          "y":  0,
-                                                                          "x":  0
+                                                                          "y":  0.69999933,
+                                                                          "x":  -2.6077032E-08
                                                                       }
                                                  }
                              }

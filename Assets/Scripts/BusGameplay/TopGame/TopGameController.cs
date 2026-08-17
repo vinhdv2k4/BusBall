@@ -94,7 +94,32 @@ public class TopGameController : MonoBehaviour
     public bool HasBallInConvayor() => occupiedConveyorSlots > 0;
     public int GetOccupiedSlotConvayorCount() => occupiedConveyorSlots;
     public Dictionary<ColorType, int> GetConveyorColorCounts() => new(conveyorColorCounts);
-    public bool IsStuckConvayor() => IsFullSlotConvayor() && !IsWin();
+    public bool IsStuckConvayor()
+    {
+        if (!IsFullSlotConvayor() || IsWin()) return false;
+        return !HasCompletableFirstBox();
+    }
+
+    private bool HasCompletableFirstBox()
+    {
+        if (boxLaneHolder == null) return false;
+
+        foreach (BoxLane lane in boxLaneHolder.LstBoxLanes)
+        {
+            Box firstBox = lane != null ? lane.GetFirstBox() : null;
+            if (firstBox == null) continue;
+            if (firstBox.IsFull) return true;
+
+            int requiredBallCount = firstBox.EmptySlotCount;
+            if (requiredBallCount <= 0) return true;
+
+            conveyorColorCounts.TryGetValue(firstBox.ColorType, out int availableBallCount);
+            if (availableBallCount >= requiredBallCount)
+                return true;
+        }
+
+        return false;
+    }
 
     private void UpdateConveyorText()
     {

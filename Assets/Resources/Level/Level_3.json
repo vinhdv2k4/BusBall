@@ -1,5 +1,6 @@
 {
     "levelId":  3,
+    "objectScale":  0.9,
     "busEnrichedDatas":  [
                              {
                                  "Type":  0,
@@ -121,9 +122,9 @@
                              {
                                  "Type":  0,
                                  "Position":  {
-                                                  "y":  0,
+                                                  "y":  1.0000007,
                                                   "z":  0,
-                                                  "x":  0
+                                                  "x":  3.5405165E-07
                                               },
                                  "Rotation":  270,
                                  "BusData":  {
@@ -146,8 +147,8 @@
                                                   },
                                  "BusPathData":  {
                                                      "startPosition":  {
-                                                                           "y":  0,
-                                                                           "x":  0
+                                                                           "y":  1.0000007,
+                                                                           "x":  3.5405165E-07
                                                                        },
                                                      "nearestT":  0.26875,
                                                      "splineContainerIndex":  1,
@@ -160,9 +161,9 @@
                              {
                                  "Type":  0,
                                  "Position":  {
-                                                  "y":  0,
+                                                  "y":  -0.6199996,
                                                   "z":  0,
-                                                  "x":  0
+                                                  "x":  1.6093257E-07
                                               },
                                  "Rotation":  270,
                                  "BusData":  {
@@ -185,8 +186,8 @@
                                                   },
                                  "BusPathData":  {
                                                      "startPosition":  {
-                                                                           "y":  0,
-                                                                           "x":  0
+                                                                           "y":  -0.6199996,
+                                                                           "x":  1.6093257E-07
                                                                        },
                                                      "nearestT":  0.22375,
                                                      "splineContainerIndex":  1,
@@ -199,9 +200,9 @@
                              {
                                  "Type":  0,
                                  "Position":  {
-                                                  "y":  0,
+                                                  "y":  -3.3200004,
                                                   "z":  0,
-                                                  "x":  0
+                                                  "x":  -1.6093257E-07
                                               },
                                  "Rotation":  90,
                                  "BusData":  {
@@ -224,8 +225,8 @@
                                                   },
                                  "BusPathData":  {
                                                      "startPosition":  {
-                                                                           "y":  0,
-                                                                           "x":  0
+                                                                           "y":  -3.3200004,
+                                                                           "x":  -1.6093257E-07
                                                                        },
                                                      "nearestT":  0.38625002,
                                                      "splineContainerIndex":  0,
