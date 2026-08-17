@@ -13,6 +13,7 @@ public class BoxLane : MonoBehaviour
     // With the default speed multiplier 1.5 this produces a 0.1 second move.
     [SerializeField, Min(0.01f)] private float boxMoveDuration = 0.15f;
     [SerializeField, Min(0.01f)] private float boxMoveSpeedMultiplier = 1.5f;
+    [SerializeField, Min(0f)] private float boxDieDelayAfterBallArrives = 0.05f;
     private readonly List<Box> boxes = new();
     private readonly List<BoxDataConfig> configs = new();
     private readonly HashSet<DockSlot> reservedSlots = new();
@@ -69,10 +70,6 @@ public class BoxLane : MonoBehaviour
         Box first = GetFirstBox();
         if (ball == null || first == null) return;
         if (receivingBalls.Contains(ball)) return;
-        Debug.Log(
-            $"[BALL ROUTE] ball={ball.name} -> lane={name}, " +
-            $"boxColor={first.ColorType}, sourceSlot={(ball.Slot != null ? ball.Slot.SlotIndex.ToString() : "none")}",
-            this);
         if (!first.CanReceiveBall(ball)) return;
         DockSlot targetSlot = null;
         foreach (DockSlot slot in first.Slots)
@@ -84,10 +81,6 @@ public class BoxLane : MonoBehaviour
         if (targetSlot == null) return;
 
         DockSlot sourceSlot = ball.Slot;
-        Debug.Log(
-            $"[BALL ROUTE] ball={ball.name} reserved lane={name}, " +
-            $"targetSlot={targetSlot.name}, sourceSlot={(sourceSlot != null ? sourceSlot.name : "none")}",
-            this);
         reservedSlots.Add(targetSlot);
         receivingBalls.Add(ball);
         // Let the box/gate move first, then send the ball into the box on an arc.
@@ -109,23 +102,16 @@ public class BoxLane : MonoBehaviour
             ball.Slot != sourceSlot ||
             (boxLaneDetector != null && !boxLaneDetector.IsDetecting(ball)))
         {
-            Debug.LogWarning(
-                $"[BALL ROUTE CANCELLED] ball={(ball != null ? ball.name : "null")} " +
-                $"lane={name}, targetSlot={(targetSlot != null ? targetSlot.name : "none")}, " +
-                $"currentSlot={(ball != null && ball.Slot != null ? ball.Slot.name : "none")}",
-                this);
             if (targetSlot != null) reservedSlots.Remove(targetSlot);
             if (ball != null) receivingBalls.Remove(ball);
             yield break;
         }
 
         if (ball.IsDocked && ball.Slot != null)
-            ball.Slot.ReleaseBall(false);
+            // Notify the conveyor so the empty slot is compacted immediately
+            // when this ball starts moving into the box.
+            ball.Slot.ReleaseBall();
 
-        Debug.Log(
-            $"[BALL ROUTE ENTER] ball={ball.name} -> lane={name}, " +
-            $"boxColor={box.ColorType}, targetSlot={targetSlot.name}",
-            this);
         ball.MoveToBoxArc(targetSlot, 0.2f, 0.6f, () =>
         {
             reservedSlots.Remove(targetSlot);
@@ -135,18 +121,12 @@ public class BoxLane : MonoBehaviour
                 !completingBoxes.Contains(box) && box.RefreshFullState())
             {
                 completingBoxes.Add(box);
-                Debug.Log(
-                    $"[BOX COMPLETE START] lane={name}, box={box.name}, color={box.ColorType}",
-                    box);
                 GameSoundManager.Instance?.PlayBoxComplete();
                 PlayGateClose();
                 StartCoroutine(CompleteBoxRoutine(box));
             }
             else if (!boxes.Contains(box) || box != GetFirstBox())
             {
-                Debug.LogWarning(
-                    $"[BOX COMPLETE BLOCKED] lane={name}, box={(box != null ? box.name : "null")}",
-                    this);
             }
         });
     }
@@ -166,13 +146,17 @@ public class BoxLane : MonoBehaviour
     private IEnumerator CompleteBoxRoutine(Box box)
     {
         if (box == null || !boxes.Contains(box) || box != GetFirstBox()) yield break;
+
+        // MoveToBoxArc invokes this routine from DOTween's OnComplete. Wait a
+        // short frame-safe delay so the third ball is fully placed in its slot
+        // before the completed box starts its Die animation.
+        yield return new WaitForSeconds(boxDieDelayAfterBallArrives);
+        if (box == null || !boxes.Contains(box) || box != GetFirstBox()) yield break;
+
         box.PlayDieVfx();
         yield return new WaitForSeconds(0.75f);
         if (box != null && boxes.Contains(box) && box == GetFirstBox())
         {
-            Debug.Log(
-                $"[BOX COMPLETE REMOVE] lane={name}, box={box.name}, color={box.ColorType}",
-                this);
             RemoveBoxAndReflow(box);
         }
     }

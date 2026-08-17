@@ -34,12 +34,10 @@ public class BoxLaneDetector : MonoBehaviour
 
         detectorCollider.isTrigger = true;
         lane ??= GetComponentInParent<BoxLane>();
-        Debug.Log($"BoxLaneDetector {name}: ready. Lane={(lane != null ? lane.name : "null")}, Collider={detectorCollider != null}.", this);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"BoxLaneDetector {name}: OnTriggerEnter2D detected {other.name}.", this);
         Enqueue(other);
     }
 
@@ -47,7 +45,6 @@ public class BoxLaneDetector : MonoBehaviour
     {
         if (other == null || other.GetComponentInParent<BallController>() == null || !enqueued.Add(other)) return;
         BallController ball = other.GetComponentInParent<BallController>();
-        Debug.Log($"BoxLaneDetector {name}: detected ball {ball.name}.", this);
         pending.Enqueue(other); routine ??= StartCoroutine(ProcessQueueRoutine());
     }
     private IEnumerator ProcessQueueRoutine()
@@ -57,7 +54,6 @@ public class BoxLaneDetector : MonoBehaviour
             Collider2D other = pending.Dequeue();
             enqueued.Remove(other);
             BallController ball = other != null ? other.GetComponentInParent<BallController>() : null;
-            Debug.Log($"BoxLaneDetector {name}: processing ball {(ball != null ? ball.name : "null")}.", this);
             lane?.ProcessBallInDetector(other);
             yield return new WaitForSeconds(processCooldown);
         }

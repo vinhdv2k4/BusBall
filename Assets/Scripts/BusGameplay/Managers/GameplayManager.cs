@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -15,11 +16,21 @@ public class GameplayManager : MonoBehaviour
     public AnimationCurve BallJumpCurve => ballJumpCurve;
     public event Action<GameplayState> StateChanged;
 
-    private void Start() { LoadLevel(); }
+    private bool canEvaluateResult;
+
+    private IEnumerator Start()
+    {
+        LoadLevel();
+
+        // The level loader may create the box lanes during Start. Wait one
+        // frame so an empty lane list is not mistaken for a completed level.
+        yield return null;
+        canEvaluateResult = true;
+    }
 
     private void Update()
     {
-        if (State != GameplayState.Playing || topGameController == null) return;
+        if (!canEvaluateResult || State != GameplayState.Playing || topGameController == null) return;
 
         if (topGameController.IsWin())
             ChangeState(GameplayState.Won);

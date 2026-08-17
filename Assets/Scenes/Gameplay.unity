@@ -31690,7 +31690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DockSlotConveyor
   dockSlots: []
-  compactDuration: 0.15
+  compactDuration: 2
 --- !u!114 &1000635276
 MonoBehaviour:
   m_ObjectHideFlags: 0

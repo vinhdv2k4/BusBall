@@ -53,7 +53,6 @@ public class BallController : MonoBehaviour
                 if (smoothOutlineApplier != null)
                 {
                     smoothOutlineApplier.SetDefaultOutline(mat);
-                    Debug.Log($"Ball {name}: Loaded and applied ball material {path}");
                 }
                 else
                 {

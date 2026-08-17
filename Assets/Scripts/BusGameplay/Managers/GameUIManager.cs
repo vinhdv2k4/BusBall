@@ -113,19 +113,30 @@ public class GameUIManager : MonoBehaviour
 
     private static Canvas GetOrCreateCanvas(Transform preferredRoot)
     {
-        Canvas canvas = preferredRoot != null ? preferredRoot.GetComponentInChildren<Canvas>(true) : null;
-        if (canvas == null)
-            canvas = FindFirstObjectByType<Canvas>();
+        // Do not reuse a gameplay/world canvas here. Its camera, sorting and
+        // transform are controlled by the level and can place result panels
+        // behind the gameplay camera (or even make them invisible).
+        Canvas canvas = null;
+        if (preferredRoot != null)
+        {
+            Transform resultCanvas = preferredRoot.Find("ResultCanvas");
+            if (resultCanvas != null)
+                canvas = resultCanvas.GetComponent<Canvas>();
+        }
+
         if (canvas == null)
         {
-            GameObject canvasObject = new("GameCanvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+            GameObject canvasObject = new("ResultCanvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             if (preferredRoot != null)
                 canvasObject.transform.SetParent(preferredRoot, false);
             canvas = canvasObject.GetComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            canvasObject.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         }
 
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.worldCamera = null;
+        canvas.overrideSorting = true;
+        canvas.sortingOrder = 1000;
+        canvas.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvas.transform.localScale = Vector3.one;
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
         if (canvasRect != null)
