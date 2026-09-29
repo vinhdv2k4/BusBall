@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1616244119242292239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7768215125728292}
+  m_Layer: 0
+  m_Name: Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7768215125728292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616244119242292239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3009030580993223422}
+  m_Father: {fileID: 1404361338674254266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8449475656935232551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1404361338674254266}
+  - component: {fileID: 491310428301315754}
+  - component: {fileID: 4072865294812682883}
+  m_Layer: 0
+  m_Name: ReviveQueue
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1404361338674254266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449475656935232551}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 9.41, z: 1.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7768215125728292}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &491310428301315754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449475656935232551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e014332c7d45af8c2cf682e754b5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.StuckReviveManager
+  _funnelManager: {fileID: 0}
+  _conveyorManager: {fileID: 0}
+  _gridManager: {fileID: 0}
+  _shooterLaunchManager: {fileID: 0}
+  _colorConfig: {fileID: 11400000, guid: a5ef46127166298488d496b9ee00ce8b, type: 2}
+  _progressTracker: {fileID: 0}
+  _rack: {fileID: 4072865294812682883}
+  _maxConveyorBallsToRevive: 9
+  _maxBallsPerShooter: 9
+  _rackWorldOffset: {x: 0, y: 0, z: 0}
+  _ballStartDelay: 0.25
+  _ballLiftDuration: 0.25
+  _ballFlyDuration: 0.6
+  _ballLiftZOffset: -1
+  _ballClusterSpacing: 0.08
+  _ballLiftEase: 9
+  _ballDescendEase: 10
+--- !u!114 &4072865294812682883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449475656935232551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f321d57202074d01bc8c3348959a9633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.ReviveShooterRack
+  _slotCount: 7
+  _slotSpacing: 1.35
+  _shooterPrefab: {fileID: 2192640080277346237, guid: fed707f077854164ca78d617457822b1, type: 3}
+  _slotPrefab: {fileID: 5952625019713700317}
+  _slots: []
+  _shooterScale: 0.9
+  _slotMoveDuration: 0.25
+  _slotMoveEase: 9
+--- !u!1001 &5354369956939839184
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7768215125728292}
+    m_Modifications:
+    - target: {fileID: 3113886298325154488, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_Name
+      value: ReviveShooterSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+--- !u!4 &3009030580993223422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7173304318551874606, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+  m_PrefabInstance: {fileID: 5354369956939839184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5952625019713700317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1789463908731287309, guid: 060dd69dad5dd3b418cb11f2fe16f4e6, type: 3}
+  m_PrefabInstance: {fileID: 5354369956939839184}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e25e299a9cd414f90bd1357ee57c464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.ReviveShooterSlot

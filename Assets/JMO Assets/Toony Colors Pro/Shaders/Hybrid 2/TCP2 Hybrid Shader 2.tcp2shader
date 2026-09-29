@@ -312,8 +312,15 @@ Shader "Toony Colors Pro 2/Hybrid Shader 2"
 /*** URP_VERSION >= 14 ***/
 			// URP 14:
 			#pragma multi_compile_fragment _ _WRITE_RENDERING_LAYERS    /*** OPTION: "Rendering Layers (URP 14+)" ***/
-			#pragma multi_compile _ _FORWARD_PLUS    /*** OPTION: "Forward+ Support (URP 14+)" ***/
 			#pragma multi_compile_fragment _ DEBUG_DISPLAY    /*** OPTION: "Rendering Debugger Support (URP 14+)" ***/
+/*** END URP_VERSION ***/
+/*** URP_VERSION >= 14 ***/
+/*** URP_VERSION >= 171 ***/
+			#pragma multi_compile _ _CLUSTER_LIGHT_LOOP    /*** OPTION: "Forward+ Support (URP 14+)" ***/
+/*** END URP_VERSION ***/
+/*** URP_VERSION < 171 ***/
+			#pragma multi_compile _ _FORWARD_PLUS    /*** OPTION: "Forward+ Support (URP 14+)" ***/
+/*** END URP_VERSION ***/
 /*** END URP_VERSION ***/
 
 			// -------------------------------------
@@ -616,9 +623,9 @@ Shader "Toony Colors Pro 2/Hybrid Shader 2"
 				Varyings_Depth input
 #ifdef _WRITE_RENDERING_LAYERS
 	#if UNITY_VERSION >= 60020000
-				, out float4 outRenderingLayers : SV_Target1
-	#else
 				, out uint outRenderingLayers : SV_Target1
+	#else
+				, out float4 outRenderingLayers : SV_Target1
 	#endif
 #endif
 				) : SV_TARGET
@@ -644,8 +651,7 @@ Shader "Toony Colors Pro 2/Hybrid Shader 2"
 					#if UNITY_VERSION >= 60020000
 						outRenderingLayers = EncodeMeshRenderingLayer();
 					#else
-						uint meshRenderingLayers = GetMeshRenderingLayer();
-						outRenderingLayers = float4(EncodeMeshRenderingLayer(meshRenderingLayers), 0, 0, 0);
+						outRenderingLayers = float4(EncodeMeshRenderingLayer(GetMeshRenderingLayer()), 0, 0, 0);
 					#endif
 				#endif
 

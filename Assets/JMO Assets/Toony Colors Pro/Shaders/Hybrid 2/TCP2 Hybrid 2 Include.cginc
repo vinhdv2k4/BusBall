@@ -561,7 +561,7 @@ struct Varyings_Meta
 	float2 uv    : TEXCOORD0;
 };
 
-#if USE_FORWARD_PLUS
+#if USE_FORWARD_PLUS || USE_CLUSTER_LIGHT_LOOP
 	// Fake InputData struct needed for Forward+ macro
 	struct InputDataForwardPlusDummy
 	{
@@ -1315,11 +1315,15 @@ half4 Fragment (
 	#if defined(TCP2_HYBRID_URP) && defined(_ADDITIONAL_LIGHTS)
 		uint pixelLightCount = GetAdditionalLightsCount();
 		#if URP_VERSION >= 12
-			#if USE_FORWARD_PLUS
+			#if USE_FORWARD_PLUS || USE_CLUSTER_LIGHT_LOOP
 				// Additional directional lights in Forward+
 				for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
 				{
-					FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+					#if URP_VERSION >= 171
+						CLUSTER_LIGHT_LOOP_SUBTRACTIVE_LIGHT_CHECK
+					#else
+						FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+					#endif
 
 					Light light = GetAdditionalLight(lightIndex, positionWS, shadowMask);
 
@@ -1461,7 +1465,7 @@ half4 Fragment (
 
 		#if defined(TCP2_HYBRID_URP)
 			half3 reflectVector = reflect(-viewDirWS, normalWS);
-			#if USE_FORWARD_PLUS
+			#if USE_FORWARD_PLUS || USE_CLUSTER_LIGHT_LOOP
 				half3 indirectSpecular = GlossyEnvironmentReflection(reflectVector, positionWS, reflectionRoughness, occlusion, normalizedScreenSpaceUV);
 			#else
 				half3 indirectSpecular = GlossyEnvironmentReflection(reflectVector, reflectionRoughness, occlusion);
@@ -1541,8 +1545,7 @@ half4 Fragment (
 		#if UNITY_VERSION >= 60020000
 			outRenderingLayers = EncodeMeshRenderingLayer();
 		#else
-			uint meshRenderingLayers = GetMeshRenderingLayer();
-			outRenderingLayers = float4(EncodeMeshRenderingLayer(meshRenderingLayers), 0, 0, 0);
+			outRenderingLayers = float4(EncodeMeshRenderingLayer(GetMeshRenderingLayer()), 0, 0, 0);
 		#endif
 	#endif
 
@@ -1889,11 +1892,15 @@ float4 fragment_outline (Varyings_Outline input) : SV_Target
 			uint pixelLightCount = GetAdditionalLightsCount();
 
 			#if URP_VERSION >= 12
-				#if USE_FORWARD_PLUS
+				#if USE_FORWARD_PLUS || USE_CLUSTER_LIGHT_LOOP
 					// Additional directional lights in Forward+
 					for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
 					{
-						FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+						#if URP_VERSION >= 171
+							CLUSTER_LIGHT_LOOP_SUBTRACTIVE_LIGHT_CHECK
+						#else
+							FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+						#endif
 
 						Light light = GetAdditionalLight(lightIndex, positionWS, shadowMask);
 

@@ -2586,8 +2586,7 @@ Shader "@%SHADER_NAME%@"
 					#if UNITY_VERSION >= 60020000
 						outRenderingLayers = EncodeMeshRenderingLayer();
 					#else
-						uint meshRenderingLayers = GetMeshRenderingLayer();
-						outRenderingLayers = float4(EncodeMeshRenderingLayer(meshRenderingLayers), 0, 0, 0);
+						outRenderingLayers = float4(EncodeMeshRenderingLayer(GetMeshRenderingLayer()), 0, 0, 0);
 					#endif
 				#endif
 ///
@@ -2963,8 +2962,7 @@ Shader "@%SHADER_NAME%@"
 						#if UNITY_VERSION >= 60020000
 							outRenderingLayers = EncodeMeshRenderingLayer();
 						#else
-							uint meshRenderingLayers = GetMeshRenderingLayer();
-							outRenderingLayers = float4(EncodeMeshRenderingLayer(meshRenderingLayers), 0, 0, 0);
+							outRenderingLayers = float4(EncodeMeshRenderingLayer(GetMeshRenderingLayer()), 0, 0, 0);
 						#endif
 					#endif
 

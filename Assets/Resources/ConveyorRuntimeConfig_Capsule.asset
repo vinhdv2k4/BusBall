@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4dcb36ebc32c3e4a9b84a31b6ec45e7, type: 3}
+  m_Name: ConveyorRuntimeConfig_Capsule
+  m_EditorClassIdentifier: BusBallJam.Gameplay::BusBallJam.Gameplay.ConveyorRuntimeConfig
+  _reverseDirection: 0
+  _slotCapacity: 30
+  _splineBakeResolution: 256
+  _speedConveyor: 3.3
+  _speedBallFollow: 8
+  _speedBallShift: 16
+  _speedBallEndMultiplier: 1.3
+  _entryProgress: 0.173
+  _minBallSpacing: 0.1
+  _receiveZones:
+  - gateIndex: 0
+    progress: 0.852
+    radius: 0.55
+    priority: 0
+  - gateIndex: 1
+    progress: 0.741
+    radius: 0.55
+    priority: 1
+  - gateIndex: 2
+    progress: 0.628
+    radius: 0.55
+    priority: 2
+  - gateIndex: 3
+    progress: 0.518
+    radius: 0.55
+    priority: 3

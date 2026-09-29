@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f23ef27ea0fa348a14ccb1d916c0aa, type: 3}
+  m_Name: GameColorConfig
+  m_EditorClassIdentifier: GameColorConfig
+  _colors:
+  - id: 1
+    displayName: Black
+    color: {r: 0.18039216, g: 0.1764706, b: 0.20000002, a: 1}
+    ballMaterial: {fileID: 2100000, guid: daa79072d6e392c41b9a4323dc5ca477, type: 2}
+    trayMaterial: {fileID: 2100000, guid: 0257e323d8167f549b5d79687250a53b, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 81387b7fbbdce6142bafb38d4f48b4b2, type: 2}
+  - id: 2
+    displayName: Blue
+    color: {r: 0.20000002, g: 0.3803922, b: 0.9803922, a: 1}
+    ballMaterial: {fileID: 2100000, guid: ddb23da40784e8a4f94c5a0bdc860ae4, type: 2}
+    trayMaterial: {fileID: 2100000, guid: 7d4cd79b26d0c0f4e9961b8765b050d2, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: e70de13f86724494cb5d37f06f049e27, type: 2}
+  - id: 3
+    displayName: Brown
+    color: {r: 0.41960788, g: 0.2901961, b: 0.1764706, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 6ded74cd1a470084887f2c4bd2139cd8, type: 2}
+    trayMaterial: {fileID: 2100000, guid: ef760693f35db71418330cdb1c84b739, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 3732a6e37e633b84aa7d6a45c3567ad1, type: 2}
+  - id: 4
+    displayName: Cyan
+    color: {r: 0.19607845, g: 0.87843144, b: 0.9450981, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 8e871b5f9265fe746a79e71f1cf7c928, type: 2}
+    trayMaterial: {fileID: 2100000, guid: a48e97f1f592ec2448caa7d112f8b101, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 5c80628280b69384197dc70a78f604b6, type: 2}
+  - id: 5
+    displayName: Gray
+    color: {r: 0.47058827, g: 0.54901963, b: 0.69411767, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 0dd6e3b62fdd1344ea77cfa74f349e33, type: 2}
+    trayMaterial: {fileID: 2100000, guid: f3f534f9d59ce114d875c92bdca05684, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 035dfb48b8b4eed41bfc1a3087adb1f6, type: 2}
+  - id: 6
+    displayName: Green
+    color: {r: 0.17254902, g: 0.764151, b: 0.17254902, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 4825326875349d54a881dedcec6abadb, type: 2}
+    trayMaterial: {fileID: 2100000, guid: 96ca98f6a33e49e4b8461facbfc253d5, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: eacf82eb78aeba242ae6b00f2d6bd48e, type: 2}
+  - id: 7
+    displayName: LightPink
+    color: {r: 0.9607843, g: 0.5764706, b: 0.63529414, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 209b1c1504ceeff4d8b65b18b43cc2d5, type: 2}
+    trayMaterial: {fileID: 2100000, guid: 59d8015ce89e3f9488177ad77484c067, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 2c240230e1b11304cb0fa5c3dc6210ca, type: 2}
+  - id: 8
+    displayName: Lime
+    color: {r: 0.69411767, g: 0.9294118, b: 0.098039225, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 00b7eb0c6995e10429721119322878af, type: 2}
+    trayMaterial: {fileID: 2100000, guid: d3c177994a46c294ebcd42137d2360c7, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 28218c1478cab93478f45b8158928580, type: 2}
+  - id: 9
+    displayName: Orange
+    color: {r: 1, g: 0.5058824, b: 0.13333334, a: 1}
+    ballMaterial: {fileID: 2100000, guid: d0dd24a848348274b8ebb5a193217bb5, type: 2}
+    trayMaterial: {fileID: 2100000, guid: 1bfc8627e2e657d4d87fc2d32edd06e2, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 16ba55f23fbabec42a577dac34d605f6, type: 2}
+  - id: 10
+    displayName: Periwinkle
+    color: {r: 0.6156863, g: 0.69803923, b: 0.9921569, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 622515504e456cd4fac5d9e824f864bc, type: 2}
+    trayMaterial: {fileID: 2100000, guid: c9fb41553e1a3654e96e5f1310d573ab, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: b034a3cdd24d4dd448bcc645182b5f9c, type: 2}
+  - id: 11
+    displayName: Pink
+    color: {r: 0.9803922, g: 0.40784317, b: 0.7411765, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 8384b5c9362cc4848a3331226eac40fd, type: 2}
+    trayMaterial: {fileID: 2100000, guid: eda5fd849efd2c74e85a0ce61792f18b, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: ab382e14faca08343b782ec95bbd8894, type: 2}
+  - id: 12
+    displayName: Purple
+    color: {r: 0.59607846, g: 0.31764707, b: 0.9607844, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 2e4e157d99b41ef4dbfb32869173d545, type: 2}
+    trayMaterial: {fileID: 2100000, guid: cd28af07d64cafb4ab658e01123442ac, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 33e413c6efad9344e9bc49013091e8c3, type: 2}
+  - id: 13
+    displayName: Red
+    color: {r: 1, g: 0.2901961, b: 0.3137255, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 8dbfbf24fa455ec478f512b5af8b38a3, type: 2}
+    trayMaterial: {fileID: 2100000, guid: ed11954bceff2334098af30728633d28, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 826aebf32648fab4bbf0c305df286803, type: 2}
+  - id: 14
+    displayName: Teal
+    color: {r: 0.07058824, g: 0.6862745, b: 0.5372549, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 3c72a9aae2f994b4b9ad396df5e733ef, type: 2}
+    trayMaterial: {fileID: 2100000, guid: e94a16ab99783944e81ba784cd15f158, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 7bb8ad5a0090fac4e96649b0d954d6d9, type: 2}
+  - id: 15
+    displayName: Violet
+    color: {r: 0.9294118, g: 0.40000004, b: 1, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 265e43b593b943546ba8fb01b22b32ec, type: 2}
+    trayMaterial: {fileID: 2100000, guid: 65cd94bd7803d1e48a1c311e57c11f5c, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: f78e72df2bb1f7a43aa593d538f92af5, type: 2}
+  - id: 16
+    displayName: White
+    color: {r: 0.8588236, g: 0.86274517, b: 0.86274517, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 6864e2515271ad643933c5002b686d87, type: 2}
+    trayMaterial: {fileID: 2100000, guid: f51e7830e74fd874c9e8cc64505791bf, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 214e1d9b662cae64da90eaa6707b218c, type: 2}
+  - id: 17
+    displayName: Yellow
+    color: {r: 1, g: 0.882353, b: 0.04705883, a: 1}
+    ballMaterial: {fileID: 2100000, guid: a0833d0502a8b224f95e0387d6e873f8, type: 2}
+    trayMaterial: {fileID: 2100000, guid: 7a893aee76df73f468d2101e45a7963d, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 5481da1a3b2404f4abd60800d3a92037, type: 2}
+  - id: 18
+    displayName: LightBeige
+    color: {r: 0.87058824, g: 0.68235296, b: 0.627451, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 937101eb3e31e7840814cc463ce0193a, type: 2}
+    trayMaterial: {fileID: 2100000, guid: eb57495d0b21bae49bf8f15c6b902bf6, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 6d0998a4b268d2948bc11fc0c7708017, type: 2}
+  - id: 19
+    displayName: LightRed
+    color: {r: 0.9960785, g: 0.3372549, b: 0.49411768, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 06a73ee3be0703447ad4227b15401aac, type: 2}
+    trayMaterial: {fileID: 2100000, guid: bb2aec8f38559f142b1f92f1924200f4, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 174a8ae2e14db294890da57c0962d8f7, type: 2}
+  - id: 20
+    displayName: DarkGreen
+    color: {r: 0.1176471, g: 0.4784314, b: 0.227451, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 3ecbbdef483fb684da22fec2b9d1dc19, type: 2}
+    trayMaterial: {fileID: 2100000, guid: c4ceb5bac795d594881372022646918f, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: de06f84d44e84164397e548039bd31d6, type: 2}
+  - id: 99
+    displayName: Wild
+    color: {r: 1, g: 1, b: 1, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 6864e2515271ad643933c5002b686d87, type: 2}
+    trayMaterial: {fileID: 2100000, guid: f51e7830e74fd874c9e8cc64505791bf, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: fdfd08efea0f06141afa086ac49ffa8a, type: 2}
+  - id: 100
+    displayName: Hidden
+    color: {r: 0.24528301, g: 0.21404414, b: 0.21404414, a: 1}
+    ballMaterial: {fileID: 2100000, guid: 2147297a0b5856d49b991deb95fdfb87, type: 2}
+    trayMaterial: {fileID: 2100000, guid: 2147297a0b5856d49b991deb95fdfb87, type: 2}
+    shooterMaterial: {fileID: 2100000, guid: 2147297a0b5856d49b991deb95fdfb87, type: 2}

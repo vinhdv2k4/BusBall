@@ -73,8 +73,10 @@ namespace ToonyColorsPro
                 LessOrEqual
             }
 
-#if UNITY_6000_0_OR_NEWER
-            const int URP_VERSION = 17;
+#if UNITY_6000_1_OR_NEWER
+            const int URP_VERSION = 171;
+#elif UNITY_6000_0_OR_NEWER
+            const int URP_VERSION = 170;
 #elif UNITY_2023_2_OR_NEWER
             const int URP_VERSION = 16;
 #elif UNITY_2022_2_OR_NEWER

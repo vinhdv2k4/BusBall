@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &314459886356370368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3454009704536203623}
+  - component: {fileID: 6696062292169082595}
+  m_Layer: 0
+  m_Name: VFX_Obstacle_IceShooter_Break_Small
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3454009704536203623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314459886356370368}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2998992740509485321}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6696062292169082595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314459886356370368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0fc9dc5f5a43d497b10260e1f34354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.VFXPoolableObject
+  _poolId: vfx_obstacle_iceshooter_break_small
+  _particles:
+  - {fileID: 4938892904615751046}
+--- !u!1001 &4079279482592222129
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3454009704536203623}
+    m_Modifications:
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172619993641018216, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+      propertyPath: m_Name
+      value: Obstacle _ Ice _ Break_small
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+--- !u!4 &2998992740509485321 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1225563014572921528, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+  m_PrefabInstance: {fileID: 4079279482592222129}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4938892904615751046 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8941611180546553399, guid: dcdf2bcddd365fd4eae2fa716da28b6b, type: 3}
+  m_PrefabInstance: {fileID: 4079279482592222129}
+  m_PrefabAsset: {fileID: 0}

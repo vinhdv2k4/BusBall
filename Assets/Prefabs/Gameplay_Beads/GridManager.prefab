@@ -1,0 +1,370 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &723191751338757833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5130697410260387697}
+  - component: {fileID: 3172733401708429111}
+  m_Layer: 0
+  m_Name: ConnectedShooterGroupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5130697410260387697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723191751338757833}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2462562057155388627}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3172733401708429111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723191751338757833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9974d2a2b15c0354ea66ed37a90e0e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.ConnectedShooterGroupManager
+  _connectorPrefab: {fileID: 1844600056667250152, guid: 54dace9c4e0844a44ae4e53cc6e6dc27, type: 3}
+--- !u!1 &3441242991029911396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4612282171067038938}
+  m_Layer: 0
+  m_Name: WallContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4612282171067038938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441242991029911396}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3646815647136160202}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4237645862601737596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3646815647136160202}
+  m_Layer: 0
+  m_Name: GridContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3646815647136160202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237645862601737596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.999998, z: 0}
+  m_LocalScale: {x: 0.942996, y: 0.942996, z: 0.942996}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8496622966600833115}
+  - {fileID: 4612282171067038938}
+  m_Father: {fileID: 2462562057155388627}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5701126995642243528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2462562057155388627}
+  - component: {fileID: 8286278046945487221}
+  - component: {fileID: 2395741054326521793}
+  - component: {fileID: 4821661070724157414}
+  - component: {fileID: 8196222923030790997}
+  m_Layer: 0
+  m_Name: GridManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2462562057155388627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701126995642243528}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3646815647136160202}
+  - {fileID: 8325482968796543649}
+  - {fileID: 5130697410260387697}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8286278046945487221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701126995642243528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e75225b96ee64c4dbe1058c8cb0e276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.GridManager
+  _levelManager: {fileID: 0}
+  _shooterLaunchManager: {fileID: 0}
+  _funnelManager: {fileID: 0}
+  _obstacleManager: {fileID: 8196222923030790997}
+  _groupManager: {fileID: 3172733401708429111}
+  _colorConfig: {fileID: 11400000, guid: a5ef46127166298488d496b9ee00ce8b, type: 2}
+  _progressTracker: {fileID: 0}
+  _entityRoot: {fileID: 8496622966600833115}
+  _smartWallBuilder: {fileID: 4821661070724157414}
+  _gridContainerFitter: {fileID: 2395741054326521793}
+  _cellSize: {x: 1.5, y: 1.5}
+  _boardOrigin: {x: 0, y: 0}
+  _defaultShooterPrefab: {fileID: 2192640080277346237, guid: fed707f077854164ca78d617457822b1, type: 3}
+  _defaultWallPrefab: {fileID: 0}
+  _defaultTunnelPrefab: {fileID: 2323612996338604141, guid: 8ce36f88e9c3cfe4ab9b37dcb3b758c4, type: 3}
+  _iceBreakRevealDelaySeconds: 0.2
+  _mergeFlyDuration: 0.18
+  _mergeFlyEase: 5
+  _mergeScaleDownDuration: 0.12
+  _mergeScaleDownEase: 26
+  _mergeSkinLeadTime: 0.02
+  _mergedShooterSkinPrefab: {fileID: 5301056266173408310, guid: 8f63c8085224f0745bc9893e3d385d3b, type: 3}
+  _mergedShooterSkinPoolId: shooter_skin_duo
+  _mergedShooterSkinPreloadCount: 1
+  _showGridGizmos: 1
+  _gridGizmosColor: {r: 0, g: 1, b: 0, a: 0.5}
+--- !u!114 &2395741054326521793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701126995642243528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f9deec6602a6c42984390edcf55aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.GridContainerFitter
+  gridContainer: {fileID: 3646815647136160202}
+  boundingBox: {fileID: 6241756613989142377}
+  fitMode: 2
+  paddingRatio: 1
+  allowScaleUp: 1
+  maxScaleUp: 1.25
+  minScale: 0.1
+  baseScale: {x: 1, y: 1, z: 1}
+  gridSizeSource: 0
+  rows: 4
+  columns: 5
+  cellSize: {x: 1, y: 1}
+  manualGridSize: {x: 5, y: 4}
+  centerToBoundingBox: 1
+  boundingBoxAnchor: 1
+--- !u!114 &4821661070724157414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701126995642243528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766b2f5af125358409b08d250ccdf809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.SmartWallBuilder
+  _gridManager: {fileID: 8286278046945487221}
+  _extraWallLayers: 3
+  _minWidthSize: 10
+  _minHeightSize: 8
+  _wallRoot: {fileID: 4612282171067038938}
+  _combineStaticBatch: 1
+  _prefabs:
+    _side: {fileID: 921551918511462647, guid: eadfae6dd6c73544e898d622ddf5c240, type: 3}
+    _tube: {fileID: 8850096368842008994, guid: 939d746a84ab84c41b914833245680d8, type: 3}
+    _end: {fileID: 3101191199840113917, guid: 492268e73deb22045ac364ef3ec66036, type: 3}
+    _solo: {fileID: 4280641665307712173, guid: 9c7d82daf15b1b444808cbd8e9820710, type: 3}
+    _corner: {fileID: 3420060626870870616, guid: c610412507d5e9d438819aaa186ef2f5, type: 3}
+    _cornerCorner: {fileID: 2142874628271458893, guid: 40072b43c494aea4ea6fe7670568bfb9, type: 3}
+    _insideX1: {fileID: 4080387554397417500, guid: 48435881f4ce5b84eb27fd3f2fd8b9bf, type: 3}
+    _insideX2: {fileID: 1270707113732307764, guid: 53688399675bb4b4f96f7200f7a5724a, type: 3}
+    _insideX4: {fileID: 3954460688250065552, guid: 45347cf1167110b479f1e79065290021, type: 3}
+    _outsideX1: {fileID: 2464747671226916384, guid: 38497e224e03d7249b285942c0af8fdb, type: 3}
+    _outsideX2: {fileID: 2770166371610992458, guid: 2e9f3e261637fa64188f11b5ed52df49, type: 3}
+    _full: {fileID: 2189152739140229449, guid: 70cd1db5a67f936468b3dae1ae31daa1, type: 3}
+  _showExtensionGizmos: 0
+  _extensionGizmoColor: {r: 0.2, g: 0.8, b: 1, a: 0.5}
+--- !u!114 &8196222923030790997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701126995642243528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a4f091174f34f4ebb97ff42bc6c42b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.GridObstacleManager
+  _lockBarPrefab: {fileID: 2210537217309217078, guid: e5443adf5735a1849b6b68cef01e96ab, type: 3}
+  _iceBlockPrefab: {fileID: 5255940686052213110, guid: 3df6ed7ca86881c4a85f9a281fd74087, type: 3}
+  _glassBarrierPrefab: {fileID: 2805707241582907294, guid: 8ad0168d76738bb41b3e88181797bd22, type: 3}
+--- !u!1 &7934321094729651027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8496622966600833115}
+  m_Layer: 0
+  m_Name: ShooterContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8496622966600833115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934321094729651027}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3646815647136160202}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8430466120609235816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8325482968796543649}
+  - component: {fileID: 6241756613989142377}
+  - component: {fileID: 305429333065482932}
+  m_Layer: 2
+  m_Name: Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8325482968796543649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430466120609235816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2462562057155388627}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6241756613989142377
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430466120609235816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.092873, y: 3.771984, z: 1}
+  m_Center: {x: 0, y: 2.114006, z: 0}
+--- !u!114 &305429333065482932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430466120609235816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c194b8c565453884fbf6c0b136c156c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallDropParty.Gameplay.CameraAnchoredBoundingBoxFitter
+  targetCamera: {fileID: 0}
+  gridFitter: {fileID: 2395741054326521793}
+  gameplayPlane: {fileID: 8325482968796543649}
+  useCurrentTopAsFixedTop: 1
+  fixedTopLocalY: 3.999998
+  leftPadding: 0.5
+  rightPadding: 0.5
+  bottomPadding: 2.5
+  minWidth: 1
+  minHeight: 1
+  updateWhenResolutionChanged: 0

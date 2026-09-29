@@ -23,7 +23,7 @@ namespace ToonyColorsPro
 		{
 			public static bool DEBUG_MODE = false;
 
-			internal const string TCP2_VERSION = "2.9.19";
+			internal const string TCP2_VERSION = "2.9.20";
 			internal const string DOCUMENTATION_URL = "https://jeanmoreno.com/unity/toonycolorspro/doc/shader_generator_2";
 			internal const string OUTPUT_PATH = "/JMO Assets/Toony Colors Pro/Shaders Generated/";
 
